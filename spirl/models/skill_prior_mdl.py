@@ -111,6 +111,7 @@ class SkillPriorMdl(BaseModel, ProbabilisticModel):
         inputs.observations = inputs.actions    # for seamless evaluation
 
         # run inference
+        # output.q: MultivariateGaussian
         output.q = self._run_inference(inputs)
 
         # compute (fixed) prior

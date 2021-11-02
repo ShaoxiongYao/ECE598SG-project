@@ -22,6 +22,8 @@ class D4RLSequenceSplitDataset(Dataset):
         self.shuffle = shuffle
 
         env = gym.make(self.spec.env_name)
+        # self.dataset: dict
+        #         keys: 'actions', 'infos', 'observations', 'rewards', 'terminals', 'timeouts'
         self.dataset = env.get_dataset()
 
         # split dataset into sequences
@@ -30,6 +32,8 @@ class D4RLSequenceSplitDataset(Dataset):
         self.seqs = []
         for end_idx in seq_end_idxs:
             if end_idx+1 - start < self.subseq_len: continue    # skip too short demos
+            # states: 228 x 60, guess: sequence length x (state + state velocity)
+            # actions: 228 x 9, guess: sequence length x action dimenison (7 joint velocities + 2 gripper actions)
             self.seqs.append(AttrDict(
                 states=self.dataset['observations'][start:end_idx+1],
                 actions=self.dataset['actions'][start:end_idx+1],

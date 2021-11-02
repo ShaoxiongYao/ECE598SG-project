@@ -126,6 +126,18 @@ class ModelTrainer(BaseTrainer):
         print('starting epoch ', epoch)
 
         for self.batch_idx, sample_batched in enumerate(self.train_loader):
+            # sample_batched: dict, 
+            # flat:
+            # keys: 'states', 128 x 2 x 60
+            #       'actions', 128 x 1 x 9 
+            #       'pad_mask', 128 x 2
+            # hierarchical:
+            # keys: 'states', 128 x 11 x 60
+            #       'actions', 128 x 10 x 9 
+            #       'pad_mask', 128 x 11
+            for key in sample_batched.keys():
+                print(key, sample_batched[key].shape)
+            input()
             data_load_time.update(time.time() - end)
             inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
             with self.training_context():
