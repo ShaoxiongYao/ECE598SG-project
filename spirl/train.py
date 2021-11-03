@@ -189,8 +189,10 @@ class ModelTrainer(BaseTrainer):
         self.model_test.eval()
         self.evaluator.reset()
 
+        print("Dataset size:", len(self.train_loader))
+
         with autograd.no_grad():
-            for batch_idx, sample_batched in enumerate(self.val_loader):
+            for batch_idx, sample_batched in enumerate(self.train_loader):
                 inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
 
                 for key in sample_batched.keys():
