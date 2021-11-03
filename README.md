@@ -242,5 +242,9 @@ We also published many of the utils / architectural building blocks in a stand-a
 own research projects: check out the [blox](https://github.com/orybkin/blox-nn) python module. 
 
 
+## ECE598 Project
 
+Run the following code to collect one transition pair:
+
+    python3 spirl/train.py --path=spirl/configs/skill_prior_learning/kitchen/hierarchical --val_data_size=160 --train=0 --save_dynamics_data=1
 

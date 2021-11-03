@@ -70,6 +70,8 @@ class ModelTrainer(BaseTrainer):
             self.run_val_sweep()
         elif args.train:
             self.train(start_epoch)
+        elif args.save_dynamics_data:
+            self.save_dynamics_data()
         else:
             self.val()
     
@@ -135,9 +137,6 @@ class ModelTrainer(BaseTrainer):
             # keys: 'states', 128 x 11 x 60
             #       'actions', 128 x 10 x 9 
             #       'pad_mask', 128 x 11
-            for key in sample_batched.keys():
-                print(key, sample_batched[key].shape)
-            input()
             data_load_time.update(time.time() - end)
             inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
             with self.training_context():
@@ -178,6 +177,55 @@ class ModelTrainer(BaseTrainer):
             del output, losses
             self.global_step = self.global_step + 1
 
+    def save_dynamics_data(self):
+        # TODO: this function was copied from self.val, 
+        #       remote unnecessary validation functionalities from this function
+        dynamics_dataset_dir = 'data/example_dynamics_data'
+
+        print('Collect dynamcis data from dataset')
+        start = time.time()
+        self.model_test.load_state_dict(self.model.state_dict())
+        losses_meter = RecursiveAverageMeter()
+        self.model_test.eval()
+        self.evaluator.reset()
+
+        with autograd.no_grad():
+            for batch_idx, sample_batched in enumerate(self.val_loader):
+                inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
+
+                for key in sample_batched.keys():
+                    filename = os.path.join(dynamics_dataset_dir, key+".pt")
+                    torch.save(sample_batched[key], filename)
+
+                # run evaluator with val-mode model
+                with self.model_test.val_mode():
+                    self.evaluator.eval(inputs, self.model_test)
+
+                # run non-val-mode model (inference) to check overfitting
+                output = self.model_test(inputs)
+                # output.z: torch.Tensor, shape: batchsize x skill_dim(10)
+                losses = self.model_test.loss(output, inputs)
+
+                filename = os.path.join(dynamics_dataset_dir, "skill_z.pt")
+                torch.save(output.z, filename)
+
+                losses_meter.update(losses)
+                del losses
+
+                # TODO: save multiple transitions
+                break
+            
+            if not self.args.dont_save:
+                if self.evaluator is not None:
+                    self.evaluator.dump_results(self.global_step)
+
+                self.model_test.log_outputs(output, inputs, losses_meter.avg, self.global_step,
+                                            log_images=True, phase='val', **self._logging_kwargs)
+                print(('\nTest set: Average loss: {:.4f} in {:.2f}s\n'
+                    .format(losses_meter.avg.total.value.item(), time.time() - start)))
+        
+        print("Dynamics data is saved successfully.")
+
     def val(self):
         print('Running Testing')
         if self.args.test_prediction:
@@ -196,6 +244,7 @@ class ModelTrainer(BaseTrainer):
 
                     # run non-val-mode model (inference) to check overfitting
                     output = self.model_test(inputs)
+                    # output.z: torch.Tensor, shape: batchsize x skill_dim(10)
                     losses = self.model_test.loss(output, inputs)
 
                     losses_meter.update(losses)
