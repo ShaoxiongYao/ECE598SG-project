@@ -174,6 +174,7 @@ class SkillPriorMdl(BaseModel, ProbabilisticModel):
         # log videos/gifs in tensorboard
         if log_images:
             print('{} {}: logging videos'.format(phase, step))
+            # for kitchen environment: visualize is a void function
             self._logger.visualize(model_output, inputs, losses, step, phase, logger, **logging_kwargs)
 
     def decode(self, z, cond_inputs, steps, inputs=None):

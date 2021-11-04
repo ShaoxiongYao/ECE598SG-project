@@ -1,0 +1,979 @@
+loading from the config file spirl/configs/skill_prior_learning/kitchen/hierarchical_Oct28/conf.py
+using log dir:  ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/events
+Writing to the experiment directory: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28
+
+********************************************************************************
+Training command:
+python spirl/train.py --path=spirl/configs/skill_prior_learning/kitchen/hierarchical_Oct28 --val_data_size=160 --train=0 --val_sweep=1
+
+
+********************************************************************************
+
+Save git commit and diff to ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/git.txt
+['echo `git rev-parse HEAD` > ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/git.txt', 'git diff >> ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/git.txt']
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+len train dataset 12325
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+len val dataset 160
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep0.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep0.pth' (epoch 0)
+Running Testing
+Eval time for batch:  1.246156930923462
+mse: 0.06065166257758392
+val 960: logging videos
+
+Test set: Average loss: 9.1256 in 1.57s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep2.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep2.pth' (epoch 2)
+Running Testing
+Eval time for batch:  1.3279480934143066
+mse: 0.053516627922363114
+val 2880: logging videos
+
+Test set: Average loss: 6.5972 in 1.62s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep4.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep4.pth' (epoch 4)
+Running Testing
+Eval time for batch:  1.236971139907837
+mse: 0.05237479567585979
+val 4800: logging videos
+
+Test set: Average loss: 6.7784 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep6.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep6.pth' (epoch 6)
+Running Testing
+Eval time for batch:  1.2380948066711426
+mse: 0.05060604668688029
+val 6720: logging videos
+
+Test set: Average loss: 6.8356 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep8.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep8.pth' (epoch 8)
+Running Testing
+Eval time for batch:  1.208782434463501
+mse: 0.04762134836346377
+val 8640: logging videos
+
+Test set: Average loss: 6.0195 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep10.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep10.pth' (epoch 10)
+Running Testing
+Eval time for batch:  1.2322089672088623
+mse: 0.04468953308969503
+val 10560: logging videos
+
+Test set: Average loss: 6.9537 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep12.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep12.pth' (epoch 12)
+Running Testing
+Eval time for batch:  1.2277472019195557
+mse: 0.047447450102481525
+val 12480: logging videos
+
+Test set: Average loss: 6.4969 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep14.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep14.pth' (epoch 14)
+Running Testing
+Eval time for batch:  1.228081464767456
+mse: 0.04522552347043529
+val 14400: logging videos
+
+Test set: Average loss: 6.2444 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep16.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep16.pth' (epoch 16)
+Running Testing
+Eval time for batch:  1.3070034980773926
+mse: 0.05298992585449014
+val 16320: logging videos
+
+Test set: Average loss: 8.0913 in 1.63s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep18.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep18.pth' (epoch 18)
+Running Testing
+Eval time for batch:  1.2593305110931396
+mse: 0.04682635639619548
+val 18240: logging videos
+
+Test set: Average loss: 6.9560 in 1.55s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep20.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep20.pth' (epoch 20)
+Running Testing
+Eval time for batch:  1.2901077270507812
+mse: 0.04688466141669778
+val 20160: logging videos
+
+Test set: Average loss: 6.9056 in 1.58s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep22.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep22.pth' (epoch 22)
+Running Testing
+Eval time for batch:  1.2488574981689453
+mse: 0.04334028032462811
+val 22080: logging videos
+
+Test set: Average loss: 6.9853 in 1.55s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep24.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep24.pth' (epoch 24)
+Running Testing
+Eval time for batch:  1.2289495468139648
+mse: 0.04198889907274861
+val 24000: logging videos
+
+Test set: Average loss: 6.9792 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep26.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep26.pth' (epoch 26)
+Running Testing
+Eval time for batch:  1.3296160697937012
+mse: 0.04723035270581022
+val 25920: logging videos
+
+Test set: Average loss: 6.6638 in 1.60s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep28.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep28.pth' (epoch 28)
+Running Testing
+Eval time for batch:  1.2891888618469238
+mse: 0.04622114862286253
+val 27840: logging videos
+
+Test set: Average loss: 7.5344 in 1.58s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep30.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep30.pth' (epoch 30)
+Running Testing
+Eval time for batch:  1.3155691623687744
+mse: 0.0430324006738374
+val 29760: logging videos
+
+Test set: Average loss: 7.2895 in 1.62s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep32.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep32.pth' (epoch 32)
+Running Testing
+Eval time for batch:  1.2420082092285156
+mse: 0.04617961194526288
+val 31680: logging videos
+
+Test set: Average loss: 7.0035 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep34.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep34.pth' (epoch 34)
+Running Testing
+Eval time for batch:  1.2207202911376953
+mse: 0.04632344910351094
+val 33600: logging videos
+
+Test set: Average loss: 7.1764 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep36.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep36.pth' (epoch 36)
+Running Testing
+Eval time for batch:  1.217301368713379
+mse: 0.041704442897753324
+val 35520: logging videos
+
+Test set: Average loss: 6.5299 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep38.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep38.pth' (epoch 38)
+Running Testing
+Eval time for batch:  1.2114570140838623
+mse: 0.04448755941120908
+val 37440: logging videos
+
+Test set: Average loss: 7.6195 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep40.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep40.pth' (epoch 40)
+Running Testing
+Eval time for batch:  1.2173411846160889
+mse: 0.045456563977495534
+val 39360: logging videos
+
+Test set: Average loss: 6.5071 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep42.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep42.pth' (epoch 42)
+Running Testing
+Eval time for batch:  1.2262928485870361
+mse: 0.04464746463781921
+val 41280: logging videos
+
+Test set: Average loss: 6.9018 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep44.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep44.pth' (epoch 44)
+Running Testing
+Eval time for batch:  1.2178003787994385
+mse: 0.045823043743439484
+val 43200: logging videos
+
+Test set: Average loss: 7.0444 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep46.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep46.pth' (epoch 46)
+Running Testing
+Eval time for batch:  1.2340905666351318
+mse: 0.04288863558758749
+val 45120: logging videos
+
+Test set: Average loss: 6.7767 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep48.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep48.pth' (epoch 48)
+Running Testing
+Eval time for batch:  1.2260820865631104
+mse: 0.0419900846973178
+val 47040: logging videos
+
+Test set: Average loss: 7.0088 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep50.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep50.pth' (epoch 50)
+Running Testing
+Eval time for batch:  1.2148585319519043
+mse: 0.042426059604622424
+val 48960: logging videos
+
+Test set: Average loss: 7.3625 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep52.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep52.pth' (epoch 52)
+Running Testing
+Eval time for batch:  1.226210117340088
+mse: 0.04265127473627217
+val 50880: logging videos
+
+Test set: Average loss: 6.9354 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep54.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep54.pth' (epoch 54)
+Running Testing
+Eval time for batch:  1.2262604236602783
+mse: 0.03977431359817274
+val 52800: logging videos
+
+Test set: Average loss: 7.2267 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep56.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep56.pth' (epoch 56)
+Running Testing
+Eval time for batch:  1.2268316745758057
+mse: 0.0467769800015958
+val 54720: logging videos
+
+Test set: Average loss: 7.4821 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep58.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep58.pth' (epoch 58)
+Running Testing
+Eval time for batch:  1.2287368774414062
+mse: 0.04444432262607734
+val 56640: logging videos
+
+Test set: Average loss: 7.6392 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep60.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep60.pth' (epoch 60)
+Running Testing
+Eval time for batch:  1.2397146224975586
+mse: 0.03797192154524964
+val 58560: logging videos
+
+Test set: Average loss: 7.2122 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep62.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep62.pth' (epoch 62)
+Running Testing
+Eval time for batch:  1.2274844646453857
+mse: 0.04221920878626406
+val 60480: logging videos
+
+Test set: Average loss: 6.4802 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep64.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep64.pth' (epoch 64)
+Running Testing
+Eval time for batch:  1.2162706851959229
+mse: 0.04358335258439183
+val 62400: logging videos
+
+Test set: Average loss: 7.6526 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep66.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep66.pth' (epoch 66)
+Running Testing
+Eval time for batch:  1.220045804977417
+mse: 0.04434091962320963
+val 64320: logging videos
+
+Test set: Average loss: 7.2845 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep68.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep68.pth' (epoch 68)
+Running Testing
+Eval time for batch:  1.2075977325439453
+mse: 0.04304887478065211
+val 66240: logging videos
+
+Test set: Average loss: 7.5348 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep70.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep70.pth' (epoch 70)
+Running Testing
+Eval time for batch:  1.2214531898498535
+mse: 0.04025611164252041
+val 68160: logging videos
+
+Test set: Average loss: 6.7786 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep72.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep72.pth' (epoch 72)
+Running Testing
+Eval time for batch:  1.238025188446045
+mse: 0.044708475201332476
+val 70080: logging videos
+
+Test set: Average loss: 6.8056 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep74.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep74.pth' (epoch 74)
+Running Testing
+Eval time for batch:  1.2264056205749512
+mse: 0.0400277374246798
+val 72000: logging videos
+
+Test set: Average loss: 7.3699 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep76.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep76.pth' (epoch 76)
+Running Testing
+Eval time for batch:  1.2148587703704834
+mse: 0.04011371164233424
+val 73920: logging videos
+
+Test set: Average loss: 6.9076 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep78.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep78.pth' (epoch 78)
+Running Testing
+Eval time for batch:  1.2445590496063232
+mse: 0.04172017217933899
+val 75840: logging videos
+
+Test set: Average loss: 7.2887 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep80.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep80.pth' (epoch 80)
+Running Testing
+Eval time for batch:  1.2221457958221436
+mse: 0.04077836178839789
+val 77760: logging videos
+
+Test set: Average loss: 7.7516 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep82.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep82.pth' (epoch 82)
+Running Testing
+Eval time for batch:  1.2098362445831299
+mse: 0.03778383533790475
+val 79680: logging videos
+
+Test set: Average loss: 7.5772 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep84.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep84.pth' (epoch 84)
+Running Testing
+Eval time for batch:  1.2354488372802734
+mse: 0.04038122219208162
+val 81600: logging videos
+
+Test set: Average loss: 7.7213 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep86.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep86.pth' (epoch 86)
+Running Testing
+Eval time for batch:  1.2163169384002686
+mse: 0.04429365885880543
+val 83520: logging videos
+
+Test set: Average loss: 7.1103 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep88.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep88.pth' (epoch 88)
+Running Testing
+Eval time for batch:  1.2182772159576416
+mse: 0.04166419530156418
+val 85440: logging videos
+
+Test set: Average loss: 7.1848 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep90.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep90.pth' (epoch 90)
+Running Testing
+Eval time for batch:  1.2267694473266602
+mse: 0.04438761107303435
+val 87360: logging videos
+
+Test set: Average loss: 7.3009 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep92.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep92.pth' (epoch 92)
+Running Testing
+Eval time for batch:  1.2196424007415771
+mse: 0.04272516505807289
+val 89280: logging videos
+
+Test set: Average loss: 7.5507 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep94.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep94.pth' (epoch 94)
+Running Testing
+Eval time for batch:  1.2189216613769531
+mse: 0.04230971253855387
+val 91200: logging videos
+
+Test set: Average loss: 7.4843 in 1.49s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep96.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep96.pth' (epoch 96)
+Running Testing
+Eval time for batch:  1.2101352214813232
+mse: 0.04287750742514618
+val 93120: logging videos
+
+Test set: Average loss: 7.1490 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep98.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep98.pth' (epoch 98)
+Running Testing
+Eval time for batch:  1.2217044830322266
+mse: 0.03884079523777473
+val 95040: logging videos
+
+Test set: Average loss: 6.7725 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep100.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep100.pth' (epoch 100)
+Running Testing
+Eval time for batch:  1.2127666473388672
+mse: 0.04270507314504357
+val 96960: logging videos
+
+Test set: Average loss: 7.4181 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep102.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep102.pth' (epoch 102)
+Running Testing
+Eval time for batch:  1.2316205501556396
+mse: 0.0412662611270207
+val 98880: logging videos
+
+Test set: Average loss: 7.2872 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep104.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep104.pth' (epoch 104)
+Running Testing
+Eval time for batch:  1.239753246307373
+mse: 0.04268107380630681
+val 100800: logging videos
+
+Test set: Average loss: 6.9555 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep106.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep106.pth' (epoch 106)
+Running Testing
+Eval time for batch:  1.2163920402526855
+mse: 0.04098967805839493
+val 102720: logging videos
+
+Test set: Average loss: 7.4552 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep108.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep108.pth' (epoch 108)
+Running Testing
+Eval time for batch:  1.219515085220337
+mse: 0.04005406283249613
+val 104640: logging videos
+
+Test set: Average loss: 7.6996 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep110.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep110.pth' (epoch 110)
+Running Testing
+Eval time for batch:  1.219139814376831
+mse: 0.04250584791225265
+val 106560: logging videos
+
+Test set: Average loss: 7.4140 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep112.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep112.pth' (epoch 112)
+Running Testing
+Eval time for batch:  1.2117974758148193
+mse: 0.04479477621498518
+val 108480: logging videos
+
+Test set: Average loss: 7.8338 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep114.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep114.pth' (epoch 114)
+Running Testing
+Eval time for batch:  1.2240631580352783
+mse: 0.04181866858561989
+val 110400: logging videos
+
+Test set: Average loss: 8.3746 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep116.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep116.pth' (epoch 116)
+Running Testing
+Eval time for batch:  1.227907419204712
+mse: 0.04061828539852286
+val 112320: logging videos
+
+Test set: Average loss: 7.1973 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep118.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep118.pth' (epoch 118)
+Running Testing
+Eval time for batch:  1.2196354866027832
+mse: 0.03969365919692791
+val 114240: logging videos
+
+Test set: Average loss: 7.2958 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep120.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep120.pth' (epoch 120)
+Running Testing
+Eval time for batch:  1.2133665084838867
+mse: 0.03935251326038269
+val 116160: logging videos
+
+Test set: Average loss: 8.0598 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep122.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep122.pth' (epoch 122)
+Running Testing
+Eval time for batch:  1.2191388607025146
+mse: 0.039560408564284444
+val 118080: logging videos
+
+Test set: Average loss: 7.1476 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep124.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep124.pth' (epoch 124)
+Running Testing
+Eval time for batch:  1.2397067546844482
+mse: 0.04289051036175806
+val 120000: logging videos
+
+Test set: Average loss: 7.6545 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep126.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep126.pth' (epoch 126)
+Running Testing
+Eval time for batch:  1.2095353603363037
+mse: 0.03882945274744998
+val 121920: logging videos
+
+Test set: Average loss: 7.8419 in 1.49s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep128.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep128.pth' (epoch 128)
+Running Testing
+Eval time for batch:  1.209275245666504
+mse: 0.04447587863251101
+val 123840: logging videos
+
+Test set: Average loss: 8.0812 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep130.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep130.pth' (epoch 130)
+Running Testing
+Eval time for batch:  1.227952480316162
+mse: 0.03934249729354633
+val 125760: logging videos
+
+Test set: Average loss: 7.3683 in 1.55s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep132.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep132.pth' (epoch 132)
+Running Testing
+Eval time for batch:  1.2269983291625977
+mse: 0.04158038891182514
+val 127680: logging videos
+
+Test set: Average loss: 7.4128 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep134.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep134.pth' (epoch 134)
+Running Testing
+Eval time for batch:  1.2214419841766357
+mse: 0.038558506883418886
+val 129600: logging videos
+
+Test set: Average loss: 7.5920 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep136.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep136.pth' (epoch 136)
+Running Testing
+Eval time for batch:  1.2324903011322021
+mse: 0.04128678551205667
+val 131520: logging videos
+
+Test set: Average loss: 6.9681 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep138.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep138.pth' (epoch 138)
+Running Testing
+Eval time for batch:  1.2175898551940918
+mse: 0.041330655381898396
+val 133440: logging videos
+
+Test set: Average loss: 7.7580 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep140.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep140.pth' (epoch 140)
+Running Testing
+Eval time for batch:  1.2078213691711426
+mse: 0.0407805813010782
+val 135360: logging videos
+
+Test set: Average loss: 7.7536 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep142.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep142.pth' (epoch 142)
+Running Testing
+Eval time for batch:  1.2146413326263428
+mse: 0.04304606745427009
+val 137280: logging videos
+
+Test set: Average loss: 7.2779 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep144.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep144.pth' (epoch 144)
+Running Testing
+Eval time for batch:  1.2145426273345947
+mse: 0.04343599528510822
+val 139200: logging videos
+
+Test set: Average loss: 8.5655 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep146.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep146.pth' (epoch 146)
+Running Testing
+Eval time for batch:  1.212996006011963
+mse: 0.04284422352066031
+val 141120: logging videos
+
+Test set: Average loss: 8.4633 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep148.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep148.pth' (epoch 148)
+Running Testing
+Eval time for batch:  1.211052417755127
+mse: 0.03902746704261517
+val 143040: logging videos
+
+Test set: Average loss: 7.9822 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep150.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep150.pth' (epoch 150)
+Running Testing
+Eval time for batch:  1.2379562854766846
+mse: 0.04086208740773145
+val 144960: logging videos
+
+Test set: Average loss: 7.8234 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep152.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep152.pth' (epoch 152)
+Running Testing
+Eval time for batch:  1.2272653579711914
+mse: 0.03993747521599289
+val 146880: logging videos
+
+Test set: Average loss: 8.2274 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep154.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep154.pth' (epoch 154)
+Running Testing
+Eval time for batch:  1.2316715717315674
+mse: 0.04670314035320189
+val 148800: logging videos
+
+Test set: Average loss: 8.4962 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep156.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep156.pth' (epoch 156)
+Running Testing
+Eval time for batch:  1.240591049194336
+mse: 0.038178062401129864
+val 150720: logging videos
+
+Test set: Average loss: 7.3212 in 1.54s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep158.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep158.pth' (epoch 158)
+Running Testing
+Eval time for batch:  1.2164533138275146
+mse: 0.04446581780212
+val 152640: logging videos
+
+Test set: Average loss: 7.5853 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep160.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep160.pth' (epoch 160)
+Running Testing
+Eval time for batch:  1.2140324115753174
+mse: 0.04027391887939302
+val 154560: logging videos
+
+Test set: Average loss: 7.2106 in 1.50s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep162.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep162.pth' (epoch 162)
+Running Testing
+Eval time for batch:  1.2218496799468994
+mse: 0.04335182458453346
+val 156480: logging videos
+
+Test set: Average loss: 8.2093 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep164.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep164.pth' (epoch 164)
+Running Testing
+Eval time for batch:  1.2112386226654053
+mse: 0.04520668555051088
+val 158400: logging videos
+
+Test set: Average loss: 7.9729 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep166.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep166.pth' (epoch 166)
+Running Testing
+Eval time for batch:  1.216506004333496
+mse: 0.03863143940907321
+val 160320: logging videos
+
+Test set: Average loss: 8.6673 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep168.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep168.pth' (epoch 168)
+Running Testing
+Eval time for batch:  1.225660800933838
+mse: 0.03966917240904877
+val 162240: logging videos
+
+Test set: Average loss: 7.6739 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep170.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep170.pth' (epoch 170)
+Running Testing
+Eval time for batch:  1.2253003120422363
+mse: 0.04311601007793797
+val 164160: logging videos
+
+Test set: Average loss: 7.5085 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep172.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep172.pth' (epoch 172)
+Running Testing
+Eval time for batch:  1.2162489891052246
+mse: 0.044419601807021536
+val 166080: logging videos
+
+Test set: Average loss: 8.4019 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep174.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep174.pth' (epoch 174)
+Running Testing
+Eval time for batch:  1.21616530418396
+mse: 0.04442394696525298
+val 168000: logging videos
+
+Test set: Average loss: 8.1236 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep176.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep176.pth' (epoch 176)
+Running Testing
+Eval time for batch:  1.228606939315796
+mse: 0.0387722937084618
+val 169920: logging videos
+
+Test set: Average loss: 7.3595 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep178.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep178.pth' (epoch 178)
+Running Testing
+Eval time for batch:  1.214050531387329
+mse: 0.03935222803920624
+val 171840: logging videos
+
+Test set: Average loss: 7.1154 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep180.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep180.pth' (epoch 180)
+Running Testing
+Eval time for batch:  1.224135398864746
+mse: 0.04011138140776893
+val 173760: logging videos
+
+Test set: Average loss: 7.6418 in 1.52s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep182.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep182.pth' (epoch 182)
+Running Testing
+Eval time for batch:  1.2299752235412598
+mse: 0.042251258659234736
+val 175680: logging videos
+
+Test set: Average loss: 7.7132 in 1.53s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep184.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep184.pth' (epoch 184)
+Running Testing
+Eval time for batch:  1.2213244438171387
+mse: 0.044975999153393786
+val 177600: logging videos
+
+Test set: Average loss: 8.6985 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep186.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep186.pth' (epoch 186)
+Running Testing
+Eval time for batch:  1.2102794647216797
+mse: 0.03936194867128506
+val 179520: logging videos
+
+Test set: Average loss: 7.5986 in 1.49s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep188.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep188.pth' (epoch 188)
+Running Testing
+Eval time for batch:  1.2202439308166504
+mse: 0.04016902481816942
+val 181440: logging videos
+
+Test set: Average loss: 7.8455 in 1.51s
+
+Loading from: ./experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights
+=> loading checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth'
+=> loaded checkpoint './experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth' (epoch 190)
+Running Testing
+Eval time for batch:  1.2198069095611572
+mse: 0.04200284524995368
+val 183360: logging videos
+
+Test set: Average loss: 7.8667 in 1.52s
+
