@@ -1,10 +1,12 @@
 # Task decomposition
 
 1. Learn skill dynamics, (thread 2)
+
         + collect data
         + train dynamics model
 
 1. Define goal test, when the task terminates
+
         + look into environment definition
 2. Implement MPC 
 3. Connect with skill decoder and run 
