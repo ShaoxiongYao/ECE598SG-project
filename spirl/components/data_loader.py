@@ -30,6 +30,7 @@ class Dataset(data.Dataset):
 
     def get_data_loader(self, batch_size, n_repeat):
         print('len {} dataset {}'.format(self.phase, len(self)))
+        print("n_repeat has been set to", n_repeat)
         assert self.device in ['cuda', 'cpu']  # Otherwise the logic below is wrong
         return RepeatedDataLoader(self, batch_size=batch_size, shuffle=self.shuffle, num_workers=self.n_worker,
                                   drop_last=True, n_repeat=n_repeat, pin_memory=self.device == 'cuda',

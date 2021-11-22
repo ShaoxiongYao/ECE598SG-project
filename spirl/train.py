@@ -42,19 +42,19 @@ class ModelTrainer(BaseTrainer):
         # set up logging + training monitoring
         self.writer = self.setup_logging(conf, self.log_dir)
         self.setup_training_monitors()
-        
+        print("Checkpoint 00")
         # buld dataset, model. logger, etc.
         train_params = AttrDict(logger_class=self._hp.logger,
                                 model_class=self._hp.model,
                                 n_repeat=self._hp.epoch_cycles_train,
                                 dataset_size=-1)
-        self.logger, self.model, self.train_loader = self.build_phase(train_params, 'train')
+        self.logger, self.model, self.train_loader = self.build_phase(train_params, self.args.save_dynamics_data, 'train')
 
         test_params = AttrDict(logger_class=self._hp.logger if self._hp.logger_test is None else self._hp.logger_test,
                                model_class=self._hp.model if self._hp.model_test is None else self._hp.model_test,
                                n_repeat=1,
                                dataset_size=args.val_data_size)
-        self.logger_test, self.model_test, self.val_loader = self.build_phase(test_params, phase='val')
+        self.logger_test, self.model_test, self.val_loader = self.build_phase(test_params, self.args.save_dynamics_data, phase='val')
 
         # set up optimizer + evaluator
         self.optimizer = self.get_optimizer_class()(filter(lambda p: p.requires_grad, self.model.parameters()), lr=self._hp.lr)
@@ -65,13 +65,13 @@ class ModelTrainer(BaseTrainer):
         self.global_step, start_epoch = 0, 0
         if args.resume or conf.ckpt_path is not None:
             start_epoch = self.resume(args.resume, conf.ckpt_path)
-
+        print("Checkpoint 01")
         if args.val_sweep:
             self.run_val_sweep()
         elif args.train:
             self.train(start_epoch)
         elif args.save_dynamics_data:
-            self.save_dynamics_data()
+            self.save_dynamics_data() 
         else:
             self.val()
     
@@ -83,7 +83,7 @@ class ModelTrainer(BaseTrainer):
             'logger_test': None,
             'evaluator': None,
             'data_dir': None,  # directory where dataset is in
-            'batch_size': 128,
+            'batch_size': 128 if not self.args.save_dynamics_data else 1,
             'exp_path': None,  # Path to the folder with experiments
             'num_epochs': 200,
             'epoch_cycles_train': 1,
@@ -96,7 +96,8 @@ class ModelTrainer(BaseTrainer):
             'top_comp_metric': None,    # metric that is used for comparison at eval time (e.g. 'mse')
         })
         return default_dict
-    
+    # 12325 data points for kitchen.
+    # 
     def train(self, start_epoch):
         if not self.args.skip_first_val:
             self.val()
@@ -182,7 +183,7 @@ class ModelTrainer(BaseTrainer):
         #       remote unnecessary validation functionalities from this function
         dynamics_dataset_dir = 'data/example_dynamics_data'
 
-        print('Collect dynamcis data from dataset')
+        print('Collect dynamics data from dataset')
         start = time.time()
         self.model_test.load_state_dict(self.model.state_dict())
         losses_meter = RecursiveAverageMeter()
@@ -190,13 +191,14 @@ class ModelTrainer(BaseTrainer):
         self.evaluator.reset()
 
         print("Dataset size:", len(self.train_loader))
-
+        print("length of train_loader:", len(self.train_loader))
+        exit(0)
         with autograd.no_grad():
             for batch_idx, sample_batched in enumerate(self.train_loader):
                 inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
 
-                for key in sample_batched.keys():
-                    filename = os.path.join(dynamics_dataset_dir, key+".pt")
+                for key in sample_batched.keys():  # action, state, pad_mask
+                    filename = os.path.join(dynamics_dataset_dir, key+str(batch_idx)+".pt")
                     torch.save(sample_batched[key], filename)
 
                 # run evaluator with val-mode model
@@ -208,14 +210,14 @@ class ModelTrainer(BaseTrainer):
                 # output.z: torch.Tensor, shape: batchsize x skill_dim(10)
                 losses = self.model_test.loss(output, inputs)
 
-                filename = os.path.join(dynamics_dataset_dir, "skill_z.pt")
+                filename = os.path.join(dynamics_dataset_dir, "skill_z"+str(batch_idx)+".pt")
                 torch.save(output.z, filename)
 
                 losses_meter.update(losses)
                 del losses
 
                 # TODO: save multiple transitions
-                break
+                # break
             
             if not self.args.dont_save:
                 if self.evaluator is not None:
@@ -327,7 +329,7 @@ class ModelTrainer(BaseTrainer):
         self.hooks.append(NanGradHook(self))
         self.hooks.append(NoneGradHook(self))
 
-    def build_phase(self, params, phase):
+    def build_phase(self, params, flag, phase):
         if not self.args.dont_save:
             logger = params.logger_class(self.log_dir, summary_writer=self.writer)
         else:
@@ -338,7 +340,10 @@ class ModelTrainer(BaseTrainer):
             model = DataParallelWrapper(model)
         model = model.to(self.device)
         model.device = self.device
-        loader = self.get_dataset(self.args, model, self.conf.data, phase, params.n_repeat, params.dataset_size)
+        print("dataset size:", params.dataset_size)
+        # WARNING: 1 should be params.n_repeat!!! 10000 should be params.dataset_size!!!
+        loader = self.get_dataset(self.args, model, self.conf.data, phase, 1 if flag else params.n_repeat, params.dataset_size)
+        print("Checkpoint 0-1")
         return logger, model, loader
 
     def get_dataset(self, args, model, data_conf, phase, n_repeat, dataset_size=-1):
@@ -346,7 +351,7 @@ class ModelTrainer(BaseTrainer):
             dataset_class = RandomVideoDataset
         else:
             dataset_class = data_conf.dataset_spec.dataset_class
-
+        print("dataset_class:", dataset_class)
         loader = dataset_class(self._hp.data_dir, data_conf, resolution=model.resolution,
                                phase=phase, shuffle=phase == "train", dataset_size=dataset_size). \
             get_data_loader(self._hp.batch_size, n_repeat)

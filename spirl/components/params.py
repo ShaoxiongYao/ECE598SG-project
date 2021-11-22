@@ -23,7 +23,7 @@ def get_args():
     parser.add_argument('--val_sweep', default=False, type=int,
                         help='if True, runs validation on all existing model checkpoints')
     parser.add_argument('--save_dynamics_data', default=False, type=int,
-                        help='if True, save data points while running validation')
+                        help='if True, save data points while running validation') # and if true, n_repeat will be forced to 1 and batch size will be changed!
 
 
     # Misc
