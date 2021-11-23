@@ -257,7 +257,19 @@ own research projects: check out the [blox](https://github.com/orybkin/blox-nn) 
 
 ## ECE598 Project
 
-Run the following code to collect one transition pair:
+Run the following code to collect one transition pair. 
+
+First uncomment the exit(0) line and change the batch\_size in \_default\_hparams() function in spirl/train.py to "... else 1" to get the length of training data;
+
+then comment out the exit(0) line and change the batch\_size in \_default\_hparams() function in spirl/train.py to the length of training loader, and change dynamics_dataset_dir in save_dynamics_data() respectively.
+
+In order to measure the number of state-action pair, the n_repeat is forced to be 1 when save_dynamics_data is set to 1.
 
     python3 spirl/train.py --path=spirl/configs/skill_prior_learning/kitchen/hierarchical --val_data_size=160 --train=0 --save_dynamics_data=1
+    
+    python3 spirl/train.py --path=spirl/configs/skill_prior_learning/office/hierarchical\_cl --val_data_size=160 --train=0 --save_dynamics_data=1 (note: first uncompress the office_TA.tar in the data folder first, and move the data to data/roboverse/office_TA.)
+    
+With the dataset obtained, run data/example_dynamics_data/reader.py under the ECE598SG-project directory to get trained model "kitchen/office/... .pth".
 
+    
+**In short, you can just build code upon data/example_dynamics_data/xxx.pth for further development.** The API is output = model.predict(input); input is torch.cat((states\[:, 0, :\], skill_z), dim=1), which is a (batch\_size * (state_dim + z_dim))-shaped tensor, while output is (batch\_size * state_dim)-shaped tensor. 
