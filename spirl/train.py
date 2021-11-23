@@ -97,6 +97,10 @@ class ModelTrainer(BaseTrainer):
         })
         return default_dict
     # 12325 data points for kitchen.
+<<<<<<< HEAD
+    # 2175 data points for office.
+=======
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
     # 
     def train(self, start_epoch):
         if not self.args.skip_first_val:
@@ -181,7 +185,11 @@ class ModelTrainer(BaseTrainer):
     def save_dynamics_data(self):
         # TODO: this function was copied from self.val, 
         #       remote unnecessary validation functionalities from this function
+<<<<<<< HEAD
+        dynamics_dataset_dir = 'data/example_dynamics_data/office'
+=======
         dynamics_dataset_dir = 'data/example_dynamics_data'
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
 
         print('Collect dynamics data from dataset')
         start = time.time()
@@ -191,8 +199,13 @@ class ModelTrainer(BaseTrainer):
         self.evaluator.reset()
 
         print("Dataset size:", len(self.train_loader))
+<<<<<<< HEAD
+        # print("length of train_loader:", len(self.train_loader)) # To see the length of train_loader.
+        exit(0) # comment this line and last line, and change the batch size in build_phase from 1 to len(self.train_loader) to generate dataset.
+=======
         print("length of train_loader:", len(self.train_loader))
         exit(0)
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
         with autograd.no_grad():
             for batch_idx, sample_batched in enumerate(self.train_loader):
                 inputs = AttrDict(map_dict(lambda x: x.to(self.device), sample_batched))
@@ -341,8 +354,13 @@ class ModelTrainer(BaseTrainer):
         model = model.to(self.device)
         model.device = self.device
         print("dataset size:", params.dataset_size)
+<<<<<<< HEAD
+        # WARNING: 1 should be params.n_repeat!!!
+        loader = self.get_dataset(self.args, model, self.conf.data, phase, 1 if flag else params.n_repeat, params.dataset_size) # change this from 1 to len(dataset_size)!
+=======
         # WARNING: 1 should be params.n_repeat!!! 10000 should be params.dataset_size!!!
         loader = self.get_dataset(self.args, model, self.conf.data, phase, 1 if flag else params.n_repeat, params.dataset_size)
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
         print("Checkpoint 0-1")
         return logger, model, loader
 

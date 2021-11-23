@@ -1,0 +1,2 @@
+area_occurance: [238, 687, 242]
+object_occurance: {'eraser': 245, 'shed': 245, 'pepsi_bottle': 245, 'gatorade': 245, 'eraser_2': 245, 'shed_2': 245, 'pepsi_bottle_2': 245}

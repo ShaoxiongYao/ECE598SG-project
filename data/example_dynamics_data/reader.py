@@ -18,6 +18,10 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", help="0 is direct, 1 is LSTM", default=0,type=int)
     parser.add_argument("--name", help="name of environment", default="kitchen", type=str)
+<<<<<<< HEAD
+    parser.add_argument("--path", help="path of data", default= "data/example_dynamics_data/")
+=======
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
     return parser.parse_args()
 
 # one approach: given s_t and skill_z, predict s_{t+N}
@@ -66,6 +70,12 @@ class PlainNet(nn.Module):
     
     def forward(self, x):
         return self.net(x)
+<<<<<<< HEAD
+        
+    def predict(self, x):
+        return self.forward(x)
+=======
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
 
 L = 10
 
@@ -94,11 +104,21 @@ class LSTM(nn.Module):
         x = self.nn3(x)
         # x is of shape (batch_size, 10, output_dim)
         return x
+<<<<<<< HEAD
+    
+    def predict(self, x):
+        return 
+=======
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
 
 if __name__ == "__main__":
     
     args = get_args()
+<<<<<<< HEAD
+    path = args.path +args.name+"/" # change this to your directory! 
+=======
     path = "/home/kaiyan3/ECE598SG-project/data/example_dynamics_data/"+args.name+"/" # change this to your directory! 
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
     
     device = torch.device("cuda:0")
     
@@ -140,9 +160,16 @@ if __name__ == "__main__":
             valid_losses.append(loss)
             if epoch == N - 1: print(outputs[0], label[0])
             print("test loss:", loss)
+<<<<<<< HEAD
+        if len(valid_losses) > 3:  # early stopping
+            if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3]:
+                mode = "MLP" if args.mode == 0 else "LSTM"
+                torch.save(net, args.path+args.name+"_"+mode+".pth")
+=======
         if len(valid_losses) > 3:
             if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3]:
                 torch.save(name+".pth")
+>>>>>>> ea4937ae0ebd9e3cf4dc1493f5f1441cbc175325
                 break
 """
 Kitchen:
