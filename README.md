@@ -257,6 +257,9 @@ own research projects: check out the [blox](https://github.com/orybkin/blox-nn) 
 
 ## ECE598 Project
 
+
+### Train dynamics model
+
 Run the following code to collect one transition pair. 
 
 First uncomment the exit(0) line and change the batch\_size in \_default\_hparams() function in spirl/train.py to "... else 1" to get the length of training data;
@@ -273,3 +276,7 @@ With the dataset obtained, run data/example_dynamics_data/reader.py under the EC
 
     
 **In short, you can just build code upon data/example_dynamics_data/xxx.pth for further development.** The API is output = model.predict(input); input is torch.cat((states\[:, 0, :\], skill_z), dim=1), which is a (batch\_size * (state_dim + z_dim))-shaped tensor, while output is (batch\_size * state_dim)-shaped tensor. 
+
+### Use MPPI
+
+We used MPPI implementation of MPPI from: https://github.com/UM-ARM-Lab/pytorch_mppi.
