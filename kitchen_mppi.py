@@ -18,6 +18,8 @@ logging.basicConfig(level=logging.DEBUG,
 
 
 if __name__ == '__main__':
+    np.set_printoptions(precision=2, suppress=True)
+
     # state dimenison
     nx = kitchen_dims['s']
 
@@ -51,5 +53,6 @@ if __name__ == '__main__':
     for i in range(100):
         z = mppi_ctrl.command(obs)
         step_info_lst = env_skill_step(env, z, obs)
+        print(f"step {i} selected skill:", z.cpu().numpy())
 
         obs, reward, done, _ = step_info_lst[-1]
