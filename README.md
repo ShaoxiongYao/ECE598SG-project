@@ -1,3 +1,8 @@
+# Next step:
+1. Kaiyan: debug dynamics prediction
+   1. look through data collection and train code
+2. Shaoxiong: check how to use encoder to generate skill
+
 # Task decomposition
 
 1. Learn skill dynamics, (thread 2)
