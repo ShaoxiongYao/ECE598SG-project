@@ -5,7 +5,9 @@ from spirl.rl.envs.kitchen import KitchenEnv
 from spirl.models.skill_prior_mdl import SkillPriorMdl
 from data.example_dynamics_data.reader import PlainNet, LSTM
 from spirl.utils.general_utils import AttrDict
-
+from spirl.modules.variational_inference import MultivariateGaussian
+import matplotlib.pyplot as plt
+from tqdm import tqdm
 model_config = AttrDict(
     state_dim=60,
     action_dim=9,
@@ -44,18 +46,21 @@ kitchen_dims = {
     'z': 10, 's': 60, 'a': 9
 }
 
-def create_dynamics_model(model_mode='PlainNet'):
+def create_dynamics_model(model_mode='PlainNet', model_type="qhat"): # or 'q'
     
     if model_mode == 'PlainNet':
         dynamics_model = PlainNet(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
-        dynamics_model = torch.load('data/example_dynamics_data/kitchen_MLP.pth')
-    
+        dynamics_model = torch.load('data/example_dynamics_data/kitchen_MLP_'+model_type+'.pth')
+    elif model_mode == "LSTM":
+        dynamics_model = LSTM(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
+        dynamics_model = torch.load('data/example_dynamics_data/kitchen_LSTM_'+model_type+'.pth')
+        
     def skill_dynamics(state, skill):
         state = state.to(skill.device)
         state_skill = torch.cat([state, skill], axis=1)
         state_skill = state_skill.to('cuda:0')
         with torch.no_grad():
-            next_state = dynamics_model(state_skill)
+            next_state = dynamics_model.predict(state_skill)
         return next_state
     
     return skill_dynamics
@@ -63,9 +68,11 @@ def create_dynamics_model(model_mode='PlainNet'):
 def create_skill_step(step_mode='single', render_mode=None):
 
     skill_model = SkillPriorMdl(model_config)
-    ckp_data = torch.load('experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth')
+    ckp_data = torch.load('weights_ep190.pth')
     skill_model.load_state_dict(ckp_data['state_dict'])
-
+    
+    skill_model.eval() #batchnorm inside!
+    
     if step_mode == 'single':
         step_len = 1
     elif step_mode == 'all':
@@ -74,13 +81,13 @@ def create_skill_step(step_mode='single', render_mode=None):
     def env_skill_step(env, z, s):
         z = z.reshape(1, -1)
         s = torch.tensor(s).reshape(1, -1)
-
         with torch.no_grad():
             a_seq = skill_model.decode(z, s, model_config.n_rollout_steps)
         a_seq_np = a_seq[0, :, :].cpu().numpy()
 
         step_info_lst = []
         for step_idx in range(step_len):
+           
             a_np = a_seq_np[step_idx, :]
             step_info = env.step(a_np)
             step_info_lst.append(step_info)
@@ -120,21 +127,302 @@ def create_running_cost():
 
 if __name__ == '__main__':
     env = KitchenEnv({})
+    M = 50
+    N = 40
+    
+    skill_dynamics = create_dynamics_model(model_mode='PlainNet', model_type="qhat")
+    env_skill_step = create_skill_step(step_mode='all')
+    
+    skill_model = SkillPriorMdl(model_config)
+    ckp_data = torch.load('weights_ep190.pth')
+    skill_model.load_state_dict(ckp_data['state_dict'])
+    
+    
+    skill_model.eval()
+    
+    f = np.zeros((N, M))
+    for i in tqdm(range(N)):
+        obs = env.reset()
+        for step_idx in range(M):
+            s = torch.tensor(obs).reshape(1, -1)
+            # calculation of z using p
+            """
+            for param in skill_model.p[0]:
+                s = param(s)
+            z_prob_distrib = s
+            n_dim = z_prob_distrib.shape[1] // 2
+            print("n_dim:", n_dim)
+            print("sample_prior:", skill_model._sample_prior)
+            mu, log_delta = z_prob_distrib[0, :n_dim], z_prob_distrib[0, n_dim:]
+            sigma = torch.exp(log_delta)
+            print("p_mu:", mu, "p_sigma:", sigma)
+            z = (mu + sigma * torch.randn_like(sigma)).view(1, -1)
+            print("p_z:", z)
+            # z = torch.zeros((1, kitchen_dims['z']))
+            
+            # calculation of z using q as sanity check
+            #z_prob_by_q = skill_model._run_inference(s)
+            # q_input = actions # torch.cat((actions, states[:, :-1, :]), dim=-1)
+            # print("q:", skill_model.q, "q_input.shape:", q_input.shape)
+            # q_output = skill_model.q(q_input)
+            """
+            inputs = AttrDict()
+            inputs.states = s.reshape(1, 1, -1)
+            q_hat = skill_model.compute_learned_prior(skill_model._learned_prior_input(inputs))
+            # print(q_hat.mu, q_hat.sigma)
+            z = q_hat.sample()
+            # print("z:", z)
+            # print("q_output.shape:", q_output.shape, "q_output:", q_output)
+           
+            """
+            1. the big variance & undersampling of z - train dynamic model must use f(s,z) z as value
+               z apparently plays a big role in the state prediction
+            2. p(q_hat) is not a good approximator?
+            3. undersampling of states?
+            4. UNSOLVED MYSTERY: WHY LOSS IS INCREASING? (due to undersampling probably)
+            """ 
+            
+            next_s = skill_dynamics(s, z)
+            step_info_lst = env_skill_step(env, z, s)
+    
+            obs, reward, done, info = step_info_lst[-1]
+    
+            next_s = next_s.cpu().numpy().reshape(-1)
+            # print(f"step {step_idx}, prediction error:", np.linalg.norm(obs - next_s))
+            f[i, step_idx] = np.linalg.norm(obs - next_s)
+    avg, std = f.mean(axis=0), f.std(axis=0)
+    plt.plot([i for i in range(M)], avg-std, color='g')
+    plt.plot([i for i in range(M)], avg, color='r')
+    plt.plot([i for i in range(M)], avg+std, color='g')
+    plt.title("MLP with q_hat as z")
+    plt.xlabel("steps")
+    plt.ylabel("Frobenius norm error")
+    plt.yscale('log')
+    plt.savefig("MLP_qhat.jpg")
+    plt.cla()
+    
+    
+    M = 50
+    N = 40
+    
+    skill_dynamics = create_dynamics_model(model_mode='PlainNet', model_type="q")
+    env_skill_step = create_skill_step(step_mode='all')
+    
+    skill_model = SkillPriorMdl(model_config)
+    ckp_data = torch.load('weights_ep190.pth')
+    skill_model.load_state_dict(ckp_data['state_dict'])
+    
+    
+    skill_model.eval()
+    
+    f = np.zeros((N, M))
+    for i in tqdm(range(N)):
+        obs = env.reset()
+        for step_idx in range(M):
+            s = torch.tensor(obs).reshape(1, -1)
+            # calculation of z using p
+            """
+            for param in skill_model.p[0]:
+                s = param(s)
+            z_prob_distrib = s
+            n_dim = z_prob_distrib.shape[1] // 2
+            print("n_dim:", n_dim)
+            print("sample_prior:", skill_model._sample_prior)
+            mu, log_delta = z_prob_distrib[0, :n_dim], z_prob_distrib[0, n_dim:]
+            sigma = torch.exp(log_delta)
+            print("p_mu:", mu, "p_sigma:", sigma)
+            z = (mu + sigma * torch.randn_like(sigma)).view(1, -1)
+            print("p_z:", z)
+            # z = torch.zeros((1, kitchen_dims['z']))
+            
+            # calculation of z using q as sanity check
+            #z_prob_by_q = skill_model._run_inference(s)
+            # q_input = actions # torch.cat((actions, states[:, :-1, :]), dim=-1)
+            # print("q:", skill_model.q, "q_input.shape:", q_input.shape)
+            # q_output = skill_model.q(q_input)
+            """
+            inputs = AttrDict()
+            inputs.states = s.reshape(1, 1, -1)
+            q_hat = skill_model.compute_learned_prior(skill_model._learned_prior_input(inputs))
+            # # print(q_hat.mu, q_hat.sigma)
+            z = q_hat.sample()
+            # print("z:", z)
+            # print("q_output.shape:", q_output.shape, "q_output:", q_output)
+           
+            """
+            1. the big variance & undersampling of z - train dynamic model must use f(s,z) z as value
+               z apparently plays a big role in the state prediction
+            2. p(q_hat) is not a good approximator?
+            3. undersampling of states?
+            4. UNSOLVED MYSTERY: WHY LOSS IS INCREASING? (due to undersampling probably)
+            """ 
+            
+            next_s = skill_dynamics(s, z)
+            step_info_lst = env_skill_step(env, z, s)
+    
+            obs, reward, done, info = step_info_lst[-1]
+    
+            next_s = next_s.cpu().numpy().reshape(-1)
+            # print(f"step {step_idx}, prediction error:", np.linalg.norm(obs - next_s))
+            f[i, step_idx] = np.linalg.norm(obs - next_s)
+    avg, std = f.mean(axis=0), f.std(axis=0)
+    plt.plot([i for i in range(M)], avg-std, color='g')
+    plt.plot([i for i in range(M)], avg, color='r')
+    plt.plot([i for i in range(M)], avg+std, color='g')
+    plt.title("MLP with q as z")
+    plt.xlabel("steps")
+    plt.ylabel("Frobenius norm error")
+    plt.yscale('log')
+    plt.savefig("MLP_q.jpg")
+    plt.cla()
+    
+    M = 50
+    N = 40
+    
+    skill_dynamics = create_dynamics_model(model_mode='LSTM', model_type="qhat")
+    env_skill_step = create_skill_step(step_mode='all')
+    
+    skill_model = SkillPriorMdl(model_config)
+    ckp_data = torch.load('weights_ep190.pth')
+    skill_model.load_state_dict(ckp_data['state_dict'])
+    
+    
+    skill_model.eval()
+    
+    f = np.zeros((N, M))
+    for i in tqdm(range(N)):
+        obs = env.reset()
+        for step_idx in range(M):
+            s = torch.tensor(obs).reshape(1, -1)
+            # calculation of z using p
+            """
+            for param in skill_model.p[0]:
+                s = param(s)
+            z_prob_distrib = s
+            n_dim = z_prob_distrib.shape[1] // 2
+            print("n_dim:", n_dim)
+            print("sample_prior:", skill_model._sample_prior)
+            mu, log_delta = z_prob_distrib[0, :n_dim], z_prob_distrib[0, n_dim:]
+            sigma = torch.exp(log_delta)
+            print("p_mu:", mu, "p_sigma:", sigma)
+            z = (mu + sigma * torch.randn_like(sigma)).view(1, -1)
+            print("p_z:", z)
+            # z = torch.zeros((1, kitchen_dims['z']))
+            
+            # calculation of z using q as sanity check
+            #z_prob_by_q = skill_model._run_inference(s)
+            # q_input = actions # torch.cat((actions, states[:, :-1, :]), dim=-1)
+            # print("q:", skill_model.q, "q_input.shape:", q_input.shape)
+            # q_output = skill_model.q(q_input)
+            """
+            inputs = AttrDict()
+            inputs.states = s.reshape(1, 1, -1)
+            q_hat = skill_model.compute_learned_prior(skill_model._learned_prior_input(inputs))
+            # print(q_hat.mu, q_hat.sigma)
+            z = q_hat.sample()
+            # print("z:", z)
+            # print("q_output.shape:", q_output.shape, "q_output:", q_output)
+           
+            """
+            1. the big variance & undersampling of z - train dynamic model must use f(s,z) z as value
+               z apparently plays a big role in the state prediction
+            2. p(q_hat) is not a good approximator?
+            3. undersampling of states?
+            4. UNSOLVED MYSTERY: WHY LOSS IS INCREASING? (due to undersampling probably)
+            """ 
+            
+            next_s = skill_dynamics(s, z)
+            step_info_lst = env_skill_step(env, z, s)
+    
+            obs, reward, done, info = step_info_lst[-1]
+    
+            next_s = next_s.cpu().numpy().reshape(-1)
+            # print(f"step {step_idx}, prediction error:", np.linalg.norm(obs - next_s))
+            f[i, step_idx] = np.linalg.norm(obs - next_s)
+    avg, std = f.mean(axis=0), f.std(axis=0)
+    plt.plot([i for i in range(M)], avg-std, color='g')
+    plt.plot([i for i in range(M)], avg, color='r')
+    plt.plot([i for i in range(M)], avg+std, color='g')
+    plt.title("LSTM with q_hat as z")
+    plt.xlabel("steps")
+    plt.ylabel("Frobenius norm error")
+    plt.yscale('log')
+    plt.savefig("LSTM_qhat.jpg")
+    plt.cla()
+    
+    M = 50
+    N = 40
+    
+    skill_dynamics = create_dynamics_model(model_mode='LSTM', model_type="q")
+    env_skill_step = create_skill_step(step_mode='all')
+    
+    skill_model = SkillPriorMdl(model_config)
+    ckp_data = torch.load('weights_ep190.pth')
+    skill_model.load_state_dict(ckp_data['state_dict'])
+    
+    
+    skill_model.eval()
+    
+    f = np.zeros((N, M))
+    for i in tqdm(range(N)):
+        obs = env.reset()
+        for step_idx in range(M):
+            s = torch.tensor(obs).reshape(1, -1)
+            # calculation of z using p
+            """
+            for param in skill_model.p[0]:
+                s = param(s)
+            z_prob_distrib = s
+            n_dim = z_prob_distrib.shape[1] // 2
+            print("n_dim:", n_dim)
+            print("sample_prior:", skill_model._sample_prior)
+            mu, log_delta = z_prob_distrib[0, :n_dim], z_prob_distrib[0, n_dim:]
+            sigma = torch.exp(log_delta)
+            print("p_mu:", mu, "p_sigma:", sigma)
+            z = (mu + sigma * torch.randn_like(sigma)).view(1, -1)
+            print("p_z:", z)
+            # z = torch.zeros((1, kitchen_dims['z']))
+            
+            # calculation of z using q as sanity check
+            #z_prob_by_q = skill_model._run_inference(s)
+            # q_input = actions # torch.cat((actions, states[:, :-1, :]), dim=-1)
+            # print("q:", skill_model.q, "q_input.shape:", q_input.shape)
+            # q_output = skill_model.q(q_input)
+            """
+            inputs = AttrDict()
+            inputs.states = s.reshape(1, 1, -1)
+            q_hat = skill_model.compute_learned_prior(skill_model._learned_prior_input(inputs))
+            print(q_hat.mu, q_hat.sigma)
+            z = q_hat.sample()
+            # print("z:", z)
+            # print("q_output.shape:", q_output.shape, "q_output:", q_output)
+           
+            """
+            1. the big variance & undersampling of z - train dynamic model must use f(s,z) z as value
+               z apparently plays a big role in the state prediction
+            2. p(q_hat) is not a good approximator?
+            3. undersampling of states?
+            4. UNSOLVED MYSTERY: WHY LOSS IS INCREASING? (due to undersampling probably)
+            """ 
+            
+            next_s = skill_dynamics(s, z)
+            step_info_lst = env_skill_step(env, z, s)
+    
+            obs, reward, done, info = step_info_lst[-1]
+    
+            next_s = next_s.cpu().numpy().reshape(-1)
+            # print(f"step {step_idx}, prediction error:", np.linalg.norm(obs - next_s))
+            f[i, step_idx] = np.linalg.norm(obs - next_s)
+    avg, std = f.mean(axis=0), f.std(axis=0)
+    plt.plot([i for i in range(M)], avg-std, color='g')
+    plt.plot([i for i in range(M)], avg, color='r')
+    plt.plot([i for i in range(M)], avg+std, color='g')
+    plt.title("LSTM with q as z")
+    plt.xlabel("steps")
+    plt.ylabel("Frobenius norm error")
+    plt.yscale('log')
+    plt.savefig("LSTM_q.jpg")
+    plt.cla()
+        # exit(0)
 
-    skill_dynamics = create_dynamics_model()
-    env_skill_step = create_skill_step(step_mode='all', render_mode='human')
 
-    z = torch.zeros((1, kitchen_dims['z']))
-
-    obs = env.reset()
-    for step_idx in range(100):
-        s = torch.tensor(obs).reshape(1, -1)
-
-        next_s = skill_dynamics(s, z)
-        step_info_lst = env_skill_step(env, z, s)
-
-        obs, reward, done, info = step_info_lst[-1]
-        
-        next_s = next_s.cpu().numpy().reshape(-1)
-        print(f"step {step_idx}, prediction error:", 
-              np.linalg.norm(obs - next_s))
