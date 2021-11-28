@@ -3,7 +3,7 @@ import torch
 from torch.nn import MSELoss
 from spirl.rl.envs.kitchen import KitchenEnv
 from spirl.models.skill_prior_mdl import SkillPriorMdl
-from data.example_dynamics_data.reader import PlainNet, LSTM
+from data.example_dynamics_data.reader import PlainNet, LSTM, ResMLP
 from spirl.utils.general_utils import AttrDict
 from spirl.modules.variational_inference import MultivariateGaussian
 import matplotlib.pyplot as plt
@@ -54,6 +54,9 @@ def create_dynamics_model(model_mode='PlainNet', model_type="qhat"): # or 'q'
     elif model_mode == "LSTM":
         dynamics_model = LSTM(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
         dynamics_model = torch.load('data/example_dynamics_data/kitchen_LSTM_'+model_type+'.pth')
+    elif model_mode == "ResMLP":
+        dynamics_model = ResMLP(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
+        dynamics_model = torch.load('data/example_dynamics_data/kitchen_ResMLP_'+model_type+'.pth')
         
     def skill_dynamics(state, skill):
         state = state.to(skill.device)
@@ -108,6 +111,8 @@ def create_running_cost():
         """
         batch_size = state.shape[0]
         cost = torch.zeros(batch_size).to('cuda:0')
+
+        # print("predicted states:", key_state[:, 1].cpu().numpy().mean())
 
         for key in OBS_ELEMENT_GOALS.keys():
             key_idx  = OBS_ELEMENT_INDICES[key]

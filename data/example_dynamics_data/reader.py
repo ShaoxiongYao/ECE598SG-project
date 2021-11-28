@@ -72,6 +72,27 @@ class PlainNet(nn.Module):
     def predict(self, x):
         return self.forward(x)
 
+class ResMLP(nn.Module):
+    def __init__(self, input_dim, output_dim):
+        super().__init__()
+        self.input_dim, self.output_dim = input_dim, output_dim
+        self.middle_dim = 256
+        self.net = nn.Sequential(
+            nn.Linear(self.input_dim, self.middle_dim),
+            nn.LeakyReLU(),
+            nn.Linear(self.middle_dim, self.middle_dim),
+            nn.LeakyReLU(),
+            nn.Linear(self.middle_dim, self.middle_dim),
+            nn.LeakyReLU(),
+            nn.Linear(self.middle_dim, self.output_dim)
+        )
+    
+    def forward(self, x):
+        return self.net(x) + x[:, :self.output_dim]
+    
+    def predict(self, x):
+        return self.forward(x)
+
 
 L = 10
 
@@ -113,7 +134,7 @@ if __name__ == "__main__":
     path = args.path +args.name+"/" # change this to your directory!  
     device = torch.device("cuda:0")
     
-    states = torch.load(path+"states0.pt", map_location=device)
+    states = torch.load(path+"large_states0.pt", map_location=device)
     skill_z = torch.load(path+"skill_z0.pt", map_location=device)
     print(skill_z)
     print(skill_z.shape)
@@ -142,10 +163,14 @@ if __name__ == "__main__":
         feature = torch.cat((states[:, 0, :], skill_z), dim=1) # 12325 * 70
         label = states[:, -1, :] # 12325 * 60
         net = PlainNet(feature.shape[1], label.shape[1]).to(device)
-    else:   # alternative: given s_t and skill_z, use a LSTM to predict s_{t+1} to s_{t+N}
+    elif args.mode == 1:   # alternative: given s_t and skill_z, use a LSTM to predict s_{t+1} to s_{t+N}
         feature = torch.cat((states[:, 0, :], skill_z), dim=1)
         label = states[:, 1:, :] # 12325 * 10 * 60
         net = LSTM(feature.shape[1], label.shape[-1]).to(device)
+    elif args.mode == 2:
+        feature = torch.cat((states[:, 0, :], skill_z), dim=1) # 12325 * 70
+        label = states[:, -1, :] # 12325 * 60
+        net = ResMLP(feature.shape[1], label.shape[1]).to(device)
     
     # print(feature[0].view(1, -1) - torch.cat([zustand, fahigkeit], axis=1), label[0].view(1, -1) - aktion)
     # exit(0)
@@ -174,7 +199,7 @@ if __name__ == "__main__":
             outputs = net(feature)
             loss = ((outputs-label) ** 2).sum(dim=1).mean()
             
-            if args.mode == 0: losses = ((outputs-label) ** 2).sum(dim=1)
+            if args.mode in [0, 2]: losses = ((outputs-label) ** 2).sum(dim=1)
             else: losses = ((outputs - label) ** 2).sum(dim=1).sum(dim=1)
             # plt.hist(losses.detach().cpu().numpy(), bins=40)
             # plt.savefig("fig/fig_epoch_"+str(epoch)+"_mode_"+str(args.mode)+".png")
@@ -185,7 +210,12 @@ if __name__ == "__main__":
             print("test loss:", loss)
         if len(valid_losses) > 3:  # early stopping
             if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3]:
-                mode = "MLP" if args.mode == 0 else "LSTM"
+                if args.mode == 0:
+                    mode = "MLP"
+                elif args.mode == 1:
+                    mode = "LSTM"
+                elif args.mode == 2:
+                    mode = "ResMLP"
                 torch.save(net, args.path+args.name+"_"+mode+"_qhat.pth")
                 # print("prediction:", net(torch.cat([zustand, fahigkeit], axis=1)))
                 break

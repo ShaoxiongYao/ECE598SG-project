@@ -173,6 +173,12 @@ class MPPI():
     @handle_batch_input
     def _running_cost(self, state, u):
         return self.running_cost(state, u)
+    
+    def set_noise_dist(self, mu, sigma):
+        self.noise_mu = mu.to(self.d)
+        self.noise_sigma = sigma.to(self.d)
+        self.noise_sigma_inv = torch.inverse(self.noise_sigma)
+        self.noise_dist = MultivariateNormal(self.noise_mu, covariance_matrix=self.noise_sigma)
 
     def command(self, state):
         """

@@ -5,3 +5,5 @@ __pycache__
 experiments/*
 
 data/example_dynamics_data
+
+data/example_dynamics_data/kitchen/large_states0.pt
