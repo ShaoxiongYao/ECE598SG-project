@@ -162,6 +162,7 @@ class CustomLSTMCell(BaseCell):
 
     def reset(self):
         # TODO make this trainable
+        self._hp.batch_size = 12325 # WARNING: remember to change this back for model training!!! 1 for kitchen_utils, 12325 for train.py!!! 
         self.hidden_var = torch.zeros(self._hp.batch_size, self.get_state_size(), device=self._hp.device)
         
     def get_state_size(self):
@@ -195,6 +196,7 @@ class CustomLSTMCell(BaseCell):
         embedded = self.embed(cell_input.view(-1, self.input_size))
         h_in = embedded
         for i in range(self.n_layers):
+            # print(self.hidden[i][0].shape, self.hidden[i][1].shape)
             self.hidden[i] = self.lstm[i](h_in, self.hidden[i])
             h_in = self.hidden[i][0]
         output = self.output(h_in)
