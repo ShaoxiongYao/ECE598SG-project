@@ -3,7 +3,7 @@ import numpy as np
 from kitchen_utils import model_config
 from spirl.rl.envs.kitchen import KitchenEnv
 from spirl.models.skill_prior_mdl import SkillPriorMdl
-
+from tqdm import tqdm
 from spirl.utils.general_utils import AttrDict
 
 def render_demos(env):
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     env = KitchenEnv({})    
     
     skill_model = SkillPriorMdl(model_config)
-    ckp_data = torch.load('experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth')
+    ckp_data = torch.load('weights_ep190.pth')
     skill_model.load_state_dict(ckp_data['state_dict'])
 
     skill_model.eval()
@@ -33,20 +33,35 @@ if __name__ == '__main__':
     print("number of prior:", len(skill_model.p))
 
     obs = env.reset()
-    for _ in range(1000):
-        s = torch.tensor(obs.reshape(1, -1))
-        
-        # sample skill from state dependent prior
-        with torch.no_grad():
-            z = skill_model.compute_learned_prior(s)
-        z = z.sample().reshape(1, -1)
-
-        # execute first action from skill
-        with torch.no_grad():
-            a_seq = skill_model.decode(z, s, model_config.n_rollout_steps)
-        a_seq_np = a_seq[0, :, :].cpu().numpy()
-
-        for step_idx in range(a_seq_np.shape[0]):
-            obs, reward, done, info = env.step(a_seq_np[0, :])
-
-            env._render_raw(mode='human')    
+    tot_reward = 0
+    s_ts, s_tplusNs, zs = [], [], []
+    for __ in tqdm(range(2)):
+        for _ in range(50):
+            s = torch.tensor(obs.reshape(1, -1))
+            # print("step:", _)
+            # sample skill from state dependent prior
+            with torch.no_grad():
+                z = skill_model.compute_learned_prior(s)
+            z = z.sample().reshape(1, -1)
+            
+            s_ts.append(s)
+            zs.append(z)
+            # execute first action from skill
+            with torch.no_grad():
+                a_seq = skill_model.decode(z, s, model_config.n_rollout_steps)
+            a_seq_np = a_seq[0, :, :].cpu().numpy()
+    
+            for step_idx in range(a_seq_np.shape[0]):
+                obs, reward, done, info = env.step(a_seq_np[0, :])
+                tot_reward += reward
+            
+            s_tplusNs.append(obs.reshape(1, -1))
+    # print(zs[0])
+    s_ts = torch.cat([torch.tensor(x) for x in s_ts], dim=0)
+    zs = torch.cat([torch.tensor(x) for x in zs], dim=0)
+    s_tplusNs = torch.cat([torch.tensor(x) for x in s_tplusNs], dim=0)
+    torch.save(s_ts, "data/example_dynamics_data/kitchen/states1.pt")            
+    torch.save(zs, "data/example_dynamics_data/kitchen/skill_z1.pt")
+    torch.save(s_tplusNs, "data/example_dynamics_data/kitchen/states2.pt")
+    print("reward:", tot_reward)
+            # env._render_raw(mode='human')    
