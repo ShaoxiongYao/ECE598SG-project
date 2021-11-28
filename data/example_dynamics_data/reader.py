@@ -3,6 +3,7 @@ import argparse
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 import torch.nn.functional as F
+import matplotlib.pyplot as plt
 # actions (sustitute the following code with your directory of example_dynamics_data)
 """
 for d in os.listdir("/home/kaiyan3/ECE598SG-project/data/example_dynamics_data/kitchen"):
@@ -11,12 +12,11 @@ for d in os.listdir("/home/kaiyan3/ECE598SG-project/data/example_dynamics_data/k
         data = torch.load("/home/kaiyan3/ECE598SG-project/data/example_dynamics_data/kitchen/"+d)
         print(data.shape) 
 """
-
-
+torch.manual_seed(21974921)
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", help="0 is direct, 1 is LSTM", default=0,type=int)
+    parser.add_argument("--mode", help="0 is direct, 1 is LSTM", default=1,type=int)
     parser.add_argument("--name", help="name of environment", default="kitchen", type=str)
     parser.add_argument("--path", help="path of data", default= "data/example_dynamics_data/")
     return parser.parse_args()
@@ -42,7 +42,8 @@ def get_traj_dataset(feature, label):
     # return two dataloaders.
     
     n = feature.shape[0]
-    idx = torch.randperm(n)
+    # idx = torch.randperm(n)
+    # FIXME: remember to shuffle the data!!!
     n_train, n_valid = int(n * 0.8), n - int(n * 0.8)
     train_dataset, test_dataset = Trajdataset(feature[:n_train], label[:n_train]), Trajdataset(feature[n_train:], label[n_train:])
     train_loader = DataLoader(train_dataset, batch_size=BS, shuffle=True, drop_last=True)
@@ -101,10 +102,12 @@ class LSTM(nn.Module):
         return x
     
     def predict(self, x):
-        return self.forward(x)[:, 0, :]
+        return self.forward(x)[:, -1, :]
 
 
 if __name__ == "__main__":
+    
+    
     
     args = get_args()
     path = args.path +args.name+"/" # change this to your directory!  
@@ -112,7 +115,29 @@ if __name__ == "__main__":
     
     states = torch.load(path+"states0.pt", map_location=device)
     skill_z = torch.load(path+"skill_z0.pt", map_location=device)
+    print(skill_z)
+    print(skill_z.shape)
     # print(torch.norm(states[0, 0, :]))
+    """
+    print(states[0, 0, :], skill_z[0, :], states[0, -1, :])
+    
+    print("pred:", pred, "error:", nn.MSELoss()(pred, ))
+    
+    pred: tensor([[-1.3050e+00, -1.3228e+00,  1.5239e+00, -2.2134e+00,  3.3100e-01,
+          1.9347e+00,  1.6358e+00,  2.4981e-02,  3.3287e-02,  1.1228e-02,
+         -1.0135e-03, -3.4664e-01,  2.5808e-04,  5.3097e-03,  1.6267e-03,
+         -2.5658e-02,  3.0641e-03, -4.1701e-02, -1.8471e-02, -6.0221e-03,
+          7.2722e-03, -9.7901e-03, -7.0847e-01, -2.6956e-01,  3.3178e-01,
+          1.5825e+00,  9.7607e-01,  5.9867e-03,  6.6576e-04, -2.1983e-02,
+         -4.0475e-03, -6.8757e-04,  4.0796e-03,  2.7309e-03,  7.3015e-03,
+         -3.6760e-03, -8.5477e-03, -2.6050e-03, -5.5450e-04,  9.6561e-03,
+         -2.1871e-03, -8.5094e-01, -8.9897e-03, -3.4020e-04, -3.7458e-03,
+          5.0612e-04, -3.6187e-04, -6.7823e-01, -4.4577e-02,  6.1427e-03,
+          9.2872e-03, -2.7959e-03, -7.3320e-01, -2.1511e-01,  7.2636e-01,
+          1.5804e+00,  9.6519e-01, -3.3352e-03, -2.6872e-03, -5.3367e-02]],
+       device='cuda:0', grad_fn=<AddmmBackward>)
+    """
+    # exit(0)
     if args.mode == 0:
         feature = torch.cat((states[:, 0, :], skill_z), dim=1) # 12325 * 70
         label = states[:, -1, :] # 12325 * 60
@@ -121,6 +146,9 @@ if __name__ == "__main__":
         feature = torch.cat((states[:, 0, :], skill_z), dim=1)
         label = states[:, 1:, :] # 12325 * 10 * 60
         net = LSTM(feature.shape[1], label.shape[-1]).to(device)
+    
+    # print(feature[0].view(1, -1) - torch.cat([zustand, fahigkeit], axis=1), label[0].view(1, -1) - aktion)
+    # exit(0)
     
     train_loader, test_loader = get_traj_dataset(feature, label)
     optimizer = torch.optim.Adam(net.parameters())
@@ -133,26 +161,35 @@ if __name__ == "__main__":
             feature, label = samples["feature"], samples["label"]
             optimizer.zero_grad()
             outputs = net(feature)
-            # print("outputs:", (outputs[0] - label[0]))
-            loss = nn.MSELoss()(outputs, label)
-            # print("epoch", epoch, "training loss:", loss)
+            loss = ((outputs-label) ** 2).sum()
             loss.backward()
             optimizer.step()
             avg_loss += loss.item()
+            
         # print("epoch", epoch, "training loss:", avg_loss / len(train_loader))
         net.eval()
+        
         for batch_idx, samples in enumerate(test_loader, 0):
             feature, label = samples["feature"], samples["label"]
             outputs = net(feature)
-            loss = nn.MSELoss()(outputs, label)
+            loss = ((outputs-label) ** 2).sum(dim=1).mean()
+            
+            if args.mode == 0: losses = ((outputs-label) ** 2).sum(dim=1)
+            else: losses = ((outputs - label) ** 2).sum(dim=1).sum(dim=1)
+            # plt.hist(losses.detach().cpu().numpy(), bins=40)
+            # plt.savefig("fig/fig_epoch_"+str(epoch)+"_mode_"+str(args.mode)+".png")
+            # plt.cla()
+            
             valid_losses.append(loss)
-            if epoch == N - 1: print(outputs[0], label[0])
+            # if epoch == N - 1: print(outputs[0], label[0])
             print("test loss:", loss)
         if len(valid_losses) > 3:  # early stopping
             if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3]:
                 mode = "MLP" if args.mode == 0 else "LSTM"
-                torch.save(net, args.path+args.name+"_"+mode+".pth")
+                torch.save(net, args.path+args.name+"_"+mode+"_qhat.pth")
+                # print("prediction:", net(torch.cat([zustand, fahigkeit], axis=1)))
                 break
+
 """
 Kitchen:
 # action: batchsize * 10 * 9 (9-dimensional action)
