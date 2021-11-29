@@ -84,8 +84,8 @@ def create_skill_step(step_mode='single', render_mode=None):
         step_len = model_config.n_rollout_steps
 
     def env_skill_step(env, z, s):
-        z = z.reshape(1, -1)
-        s = torch.tensor(s).reshape(1, -1)
+        z = z.reshape(1, -1).double()
+        s = torch.tensor(s, dtype=torch.double).reshape(1, -1)
         with torch.no_grad():
             a_seq = skill_model.decode(z, s, model_config.n_rollout_steps)
         a_seq_np = a_seq[0, :, :].cpu().numpy()
