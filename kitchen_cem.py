@@ -52,6 +52,7 @@ if __name__ == '__main__':
     ckp_data = torch.load('experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth')
     skill_model = SkillPriorMdl(model_config)
     skill_model.load_state_dict(ckp_data['state_dict'])
+    skill_model = skill_model.double()
     skill_model.eval()
 
     print("skill prior type:", skill_model._hp.learned_prior_type)
