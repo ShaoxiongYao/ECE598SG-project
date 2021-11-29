@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     # Setup MPPI parameters
     TIMESTEPS = 10  # T
-    N_SAMPLES = 100  # K
+    N_SAMPLES = 1000  # K
     ACTION_LOW = -1.0
     ACTION_HIGH = 1.0
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
                 obs, reward, done, info = env.step(a_np)
                 total_reward += reward
 
-                env._render_raw(mode=render_mode)
+                # env._render_raw(mode=render_mode)
 
             # print("light switch state:", obs[OBS_ELEMENT_INDICES['light switch']])
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])
