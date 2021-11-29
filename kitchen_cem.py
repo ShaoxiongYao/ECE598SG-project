@@ -70,7 +70,7 @@ if __name__ == '__main__':
         obs = env.reset()
         cem_ctrl.reset()
         for i in range(100):
-            s = torch.tensor(obs.reshape(1, -1))
+            s = torch.tensor(obs.reshape(1, -1), dtype=torch.double)
             # sample skill from state dependent prior
             with torch.no_grad():
                 z_p = skill_model.compute_learned_prior(s)
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
             # get skill from MPPI controller
             z = cem_ctrl.command(obs) 
-            z = z.reshape(1, -1)
+            z = z.reshape(1, -1).double()
 
             # print(f"step {i} selected skill:", z.cpu().numpy())
 
