@@ -57,11 +57,13 @@ def create_dynamics_model(model_mode='PlainNet', model_type="qhat"): # or 'q'
     elif model_mode == "ResMLP":
         dynamics_model = ResMLP(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
         dynamics_model = torch.load('data/example_dynamics_data/kitchen_ResMLP_'+model_type+'.pth')
+    
+    dynamics_model = dynamics_model.double()
         
     def skill_dynamics(state, skill):
         state = state.to(skill.device)
         state_skill = torch.cat([state, skill], axis=1)
-        state_skill = state_skill.to('cuda:0')
+        state_skill = state_skill.to('cuda:0').double()
         with torch.no_grad():
             next_state = dynamics_model.predict(state_skill)
         return next_state
@@ -125,6 +127,9 @@ def create_running_cost():
             key_cost = key_state_err.pow(2).sum(axis=1)
 
             cost += key_cost
+
+        # add action cost
+        cost += action.pow(2).sum()
         
         return cost.cpu()
 
