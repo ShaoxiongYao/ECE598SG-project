@@ -112,7 +112,7 @@ class CEM():
         self.cov_reg = torch.eye(self.T * self.nu, device=self.d, dtype=self.dtype) * init_cov_diag * 1e-5
     
     def init_action_distribution(self, mu, sigma):
-        self.action_distribution = MultivariateNormal(mu, covariance_matrix=sigm)
+        self.action_distribution = MultivariateNormal(mu, covariance_matrix=sigma)
 
     def reset(self):
         """
