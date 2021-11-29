@@ -77,9 +77,9 @@ if __name__ == '__main__':
                 z_p = skill_model.compute_learned_prior(s)
             
             # set noise parameters to MPPI
-            # mu = z_p.mu.reshape(-1)
-            # sigma = torch.diag(z_p.log_sigma.exp().reshape(-1)) 
-            # cem_ctrl.set_noise_dist(mu, sigma)
+            mu = z_p.mu.reshape(-1)
+            sigma = torch.diag(z_p.log_sigma.exp().reshape(-1)) 
+            cem_ctrl.init_action_distribution(mu, sigma)
 
             # get skill from MPPI controller
             z = cem_ctrl.command(obs) 
