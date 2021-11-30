@@ -16,8 +16,9 @@ torch.manual_seed(21974921)
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", help="0 is direct, 1 is LSTM", default=1,type=int)
-    parser.add_argument("--name", help="name of environment", default="kitchen", type=str)
+    parser.add_argument("--mode", help="0 is direct, 1 is LSTM", default=0,type=int)
+    parser.add_argument("--mode2", help="q or qhat", default="q",type=str)
+    parser.add_argument("--name", help="name of environment", default="office", type=str)
     parser.add_argument("--path", help="path of data", default= "data/example_dynamics_data/")
     return parser.parse_args()
 
@@ -72,27 +73,6 @@ class PlainNet(nn.Module):
     def predict(self, x):
         return self.forward(x)
 
-class ResMLP(nn.Module):
-    def __init__(self, input_dim, output_dim):
-        super().__init__()
-        self.input_dim, self.output_dim = input_dim, output_dim
-        self.middle_dim = 256
-        self.net = nn.Sequential(
-            nn.Linear(self.input_dim, self.middle_dim),
-            nn.LeakyReLU(),
-            nn.Linear(self.middle_dim, self.middle_dim),
-            nn.LeakyReLU(),
-            nn.Linear(self.middle_dim, self.middle_dim),
-            nn.LeakyReLU(),
-            nn.Linear(self.middle_dim, self.output_dim)
-        )
-    
-    def forward(self, x):
-        return self.net(x) + x[:, :self.output_dim]
-    
-    def predict(self, x):
-        return self.forward(x)
-
 
 L = 10
 
@@ -134,10 +114,14 @@ if __name__ == "__main__":
     path = args.path +args.name+"/" # change this to your directory!  
     device = torch.device("cuda:0")
     
-    states = torch.load(path+"large_states0.pt", map_location=device)
-    skill_z = torch.load(path+"skill_z0.pt", map_location=device)
-    print(skill_z)
-    print(skill_z.shape)
+    
+    
+    mode2 = args.mode2
+    # states = torch.load(path+"states0.pt", map_location=device)
+    # skill_z = torch.load(path+"skill_z0.pt", map_location=device)
+    states = torch.load(path+"states0_"+mode2+".pt", map_location=device)
+    skill_z = torch.load(path+"skill_z0_"+mode2+".pt", map_location=device)
+
     # print(torch.norm(states[0, 0, :]))
     """
     print(states[0, 0, :], skill_z[0, :], states[0, -1, :])
@@ -163,22 +147,39 @@ if __name__ == "__main__":
         feature = torch.cat((states[:, 0, :], skill_z), dim=1) # 12325 * 70
         label = states[:, -1, :] # 12325 * 60
         net = PlainNet(feature.shape[1], label.shape[1]).to(device)
-    elif args.mode == 1:   # alternative: given s_t and skill_z, use a LSTM to predict s_{t+1} to s_{t+N}
+    else:   # alternative: given s_t and skill_z, use a LSTM to predict s_{t+1} to s_{t+N}
         feature = torch.cat((states[:, 0, :], skill_z), dim=1)
         label = states[:, 1:, :] # 12325 * 10 * 60
         net = LSTM(feature.shape[1], label.shape[-1]).to(device)
-    elif args.mode == 2:
-        feature = torch.cat((states[:, 0, :], skill_z), dim=1) # 12325 * 70
-        label = states[:, -1, :] # 12325 * 60
-        net = ResMLP(feature.shape[1], label.shape[1]).to(device)
+    
+    mix_with_newdata = "no" # True
+    
+    
+    
+    if mix_with_newdata in ["true","only"]:
+        if args.mode == 0:
+            states1 = torch.load(path+"states_prior_1.pt", map_location=device)
+            states2 = torch.load(path+"states_prior_2.pt", map_location=device)
+            skill_z1 = torch.load(path+"skill_z_prior_1.pt", map_location=device)
+            print("states1.shape:", states1.shape)
+            print("states2.shape:", states2.shape)
+            print("skill_z1.shape:",skill_z1.shape)
+            if mix_with_newdata == "true":
+                feature = torch.cat([feature, torch.cat([states1, skill_z1], dim=1)], dim=0) # TODO:加限制
+                label = torch.cat([label, states2], dim=0)
+            else:
+                feature = torch.cat([states1, skill_z1], dim=1)
+                label = states2
+        else: raise NotImplementedError("not implemented!")
+    # we are currently not supporting mix_with_newdata and LSTM together.
     
     # print(feature[0].view(1, -1) - torch.cat([zustand, fahigkeit], axis=1), label[0].view(1, -1) - aktion)
     # exit(0)
     
     train_loader, test_loader = get_traj_dataset(feature, label)
     optimizer = torch.optim.Adam(net.parameters())
-    N = 150 # for kitchen
-    valid_losses = []
+    N = 15000 # for kitchen
+    train_losses, valid_losses = [], []
     for epoch in range(N):
         net.train() 
         avg_loss = 0
@@ -186,12 +187,12 @@ if __name__ == "__main__":
             feature, label = samples["feature"], samples["label"]
             optimizer.zero_grad()
             outputs = net(feature)
-            loss = ((outputs-label) ** 2).sum()
-            loss.backward()
+            loss = ((outputs-label) ** 2).sum(dim=1).mean()
+            loss.backward() 
             optimizer.step()
             avg_loss += loss.item()
-            
-        # print("epoch", epoch, "training loss:", avg_loss / len(train_loader))
+        train_losses.append(avg_loss / len(train_loader))
+        print("epoch", epoch, "training loss:", avg_loss / len(train_loader))
         net.eval()
         
         for batch_idx, samples in enumerate(test_loader, 0):
@@ -199,24 +200,26 @@ if __name__ == "__main__":
             outputs = net(feature)
             loss = ((outputs-label) ** 2).sum(dim=1).mean()
             
-            if args.mode in [0, 2]: losses = ((outputs-label) ** 2).sum(dim=1)
-            else: losses = ((outputs - label) ** 2).sum(dim=1).sum(dim=1)
+            if args.mode == 0: losses = ((outputs-label) ** 2).sum(dim=1)
+            else: 
+                losses = ((outputs - label) ** 2).sum(dim=1).sum(dim=1)
             # plt.hist(losses.detach().cpu().numpy(), bins=40)
             # plt.savefig("fig/fig_epoch_"+str(epoch)+"_mode_"+str(args.mode)+".png")
             # plt.cla()
             
-            valid_losses.append(loss)
+            valid_losses.append(loss.cpu().detach())
             # if epoch == N - 1: print(outputs[0], label[0])
             print("test loss:", loss)
-        if len(valid_losses) > 3:  # early stopping
-            if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3]:
-                if args.mode == 0:
-                    mode = "MLP"
-                elif args.mode == 1:
-                    mode = "LSTM"
-                elif args.mode == 2:
-                    mode = "ResMLP"
-                torch.save(net, args.path+args.name+"_"+mode+"_qhat.pth")
+        if len(valid_losses) > 100:  # early stoppingc
+            if valid_losses[-1] > valid_losses[-2] and valid_losses[-2] > valid_losses[-3] and valid_losses[-3] > valid_losses[-4]:
+                mode = "MLP" if args.mode == 0 else "LSTM"
+                torch.save(net, args.path+"models/"+args.name+"/"+mode+"_"+mode2+"_"+mix_with_newdata+".pth")
+                plt.plot([i for i in range(len(valid_losses))], valid_losses)
+                plt.plot([i for i in range(len(train_losses))], train_losses)
+                plt.legend(["valid", "train"])
+                plt.yscale("log")
+                plt.savefig(args.path+"models/"+args.name+"/"+mode+"_"+mode2+"_"+mix_with_newdata+".jpg")
+                exit(0)
                 # print("prediction:", net(torch.cat([zustand, fahigkeit], axis=1)))
                 break
 
