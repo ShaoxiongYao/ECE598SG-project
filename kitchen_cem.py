@@ -3,7 +3,7 @@ import torch
 import logging
 from pytorch_cem import cem
 from gym import logger as gym_log
-from data.example_dynamics_data.reader import PlainNet, LSTM, ResMLP
+from data.example_dynamics_data.reader import PlainNet, LSTM
 from spirl.rl.envs.kitchen import KitchenEnv
 from kitchen_utils import OBS_ELEMENT_GOALS, model_config, OBS_ELEMENT_INDICES
 from spirl.models.skill_prior_mdl import SkillPriorMdl
