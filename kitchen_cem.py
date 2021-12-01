@@ -106,7 +106,7 @@ if __name__ == '__main__':
                 obs, reward, done, info = env.step(a_np)
                 total_reward += reward
 
-                env._render_raw(mode=render_mode)
+                # env._render_raw(mode=render_mode)
 
             # print("light switch state:", obs[OBS_ELEMENT_INDICES['light switch']])
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])
