@@ -34,7 +34,7 @@ if __name__ == '__main__':
     nx = kitchen_dims['s']
 
     # Setup MPPI parameters
-    TIMESTEPS = 10  # T
+    TIMESTEPS = 20  # T
     N_SAMPLES = 1000  # K
     ACTION_LOW = -1.0
     ACTION_HIGH = 1.0
