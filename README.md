@@ -1,3 +1,15 @@
+# MPC evaluation experiments
+
+Kitchen/office
+
+Dynamics model: 
+    + PlainNet/LSTM 
+    + q_no/q_only/q_true, qhat_no/qhat_true
+
+MPC algorithm:
+    CEM/MPPI
+    
+
 # Next step:
 1. Kaiyan: debug dynamics prediction
    1. look through data collection and train code
