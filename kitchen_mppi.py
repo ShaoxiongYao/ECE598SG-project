@@ -65,7 +65,7 @@ if __name__ == '__main__':
     running_cost   = create_running_cost()
     
     # HACK: directly load model
-    ckp_data = torch.load('experiments/skill_prior_learning/kitchen/hierarchical_Oct28/weights/weights_ep190.pth')
+    ckp_data = torch.load('weights_ep190.pth')
     skill_model = SkillPriorMdl(model_config)
     skill_model.load_state_dict(ckp_data['state_dict'])
     skill_model.eval()
