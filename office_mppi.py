@@ -103,7 +103,7 @@ if __name__ == '__main__':
     success_episodes = 0
     skill_length_lst = []    
 
-    for episode_idx in range(100):
+    for episode_idx in range(10):
         print("episode index:", episode_idx)
         obs = env.reset()
         s_ts, s_tplusNs, zs = [], [], []

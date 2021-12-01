@@ -71,7 +71,7 @@ if __name__ == '__main__':
                        u_max=torch.tensor(ACTION_HIGH, dtype=torch.double, device=d), init_cov_diag=1)
 
     total_reward_lst = []
-    for rand_seed in range(100):
+    for rand_seed in range(10):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
 
