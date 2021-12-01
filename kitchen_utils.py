@@ -62,7 +62,7 @@ def create_dynamics_model(model_mode, model_type, env_name='kitchen'): # or 'q'
     def skill_dynamics(state, skill):
         state = state.to(skill.device)
         state_skill = torch.cat([state, skill], axis=1)
-        state_skill = state_skill.to('cuda:0')
+        state_skill = state_skill.to('cuda:0').float()
         with torch.no_grad():
             next_state = dynamics_model.predict(state_skill)
         return next_state

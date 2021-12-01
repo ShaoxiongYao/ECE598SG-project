@@ -8,6 +8,49 @@ Dynamics model:
 
 MPC algorithm:
     CEM/MPPI
+
+## Statistics
+Evaluate kitchen environment:
+evaluate mppi
+Model mode: PlainNet, model type: q_no
+episode reward, mean: 0.07 std: 0.25514701644346144
+steps for first subtask, mean: 14.285714285714286 std: 7.610411772495545
+
+Model mode: PlainNet, model type: q_only
+episode reward, mean: 0.02 std: 0.13999999999999999
+steps for first subtask, mean: 12.0 std: 1.0
+
+Model mode: PlainNet, model type: q_true
+episode reward, mean: 0.08 std: 0.2712931993250107
+steps for first subtask, mean: 9.875 std: 5.688530126491377
+
+Model mode: PlainNet, model type: qhat_no
+episode reward, mean: 0.06 std: 0.23748684174075835
+steps for first subtask, mean: 9.0 std: 4.163331998932265
+
+Model mode: PlainNet, model type: qhat_true
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 7.0 std: 0.0
+
+Model mode: LSTM, model type: q_no
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 18.0 std: 0.0
+
+Model mode: LSTM, model type: q_only
+episode reward, mean: 0.02 std: 0.13999999999999999
+steps for first subtask, mean: 6.5 std: 0.5
+
+Model mode: LSTM, model type: q_true
+episode reward, mean: 0.04 std: 0.2416609194718914
+steps for first subtask, mean: 7.0 std: 2.160246899469287
+
+Model mode: LSTM, model type: qhat_no
+episode reward, mean: 0.06 std: 0.3104834939252005
+steps for first subtask, mean: 10.75 std: 5.402545696243577
+
+Model mode: LSTM, model type: qhat_true
+episode reward, mean: 0.04 std: 0.19595917942265426
+steps for first subtask, mean: 14.5 std: 9.86154146165801
     
 
 # Next step:
