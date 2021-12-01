@@ -109,6 +109,8 @@ if __name__ == '__main__':
         obs = env.reset()
         s_ts, s_tplusNs, zs = [], [], []
 
+        start_time = time.time()
+
         task_done = False
         for _ in range(50):
             s = torch.tensor(obs.reshape(1, -1))
@@ -153,6 +155,7 @@ if __name__ == '__main__':
                 success_episodes += 1
                 break  
         
+        print("episode time:", time.time()-start_time)
         print("success rate:", success_episodes/float(episode_idx+1))
         
     
