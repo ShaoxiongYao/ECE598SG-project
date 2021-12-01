@@ -79,6 +79,7 @@ if __name__ == '__main__':
                           u_max=torch.tensor(ACTION_HIGH, dtype=torch.double, device=d))
 
     total_reward_lst = []
+    first_subtask_steps_lst = []
     for rand_seed in range(100):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
@@ -86,6 +87,8 @@ if __name__ == '__main__':
         # assuming you have a gym-like env
         obs = env.reset()
         mppi_ctrl.reset()
+
+        first_subtask_steps = None
         for i in range(100):
             s = torch.tensor(obs.reshape(1, -1))
             # sample skill from state dependent prior
@@ -112,6 +115,8 @@ if __name__ == '__main__':
             
                 a_np = a_seq_np[step_idx, :]
                 obs, reward, done, info = env.step(a_np)
+                if first_subtask_steps is None and reward > 0:
+                    first_subtask_steps = i
                 total_reward += reward
 
                 # env._render_raw(mode=render_mode)
@@ -120,7 +125,12 @@ if __name__ == '__main__':
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])
 
         total_reward_lst.append(total_reward)
+        if first_subtask_steps is not None:
+            first_subtask_steps_lst.append(first_subtask_steps)
         # print(f"seed {rand_seed}, total reward:", total_reward)        
     
-    print("average total reward:", np.mean(total_reward_lst))
+    print("episode reward, mean:", np.mean(total_reward_lst), 
+          "std:", np.std(total_reward_lst) )
+    print("steps for first subtask, mean:", np.mean(first_subtask_steps_lst), 
+          "std:", np.std(first_subtask_steps_lst))
 
