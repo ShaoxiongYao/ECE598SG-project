@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 import cv2
+import time
 from torch._C import parse_ir
 
 from spirl.rl.envs.office import OfficeEnv

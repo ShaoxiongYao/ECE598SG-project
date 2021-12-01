@@ -71,14 +71,14 @@ if __name__ == '__main__':
                        u_max=torch.tensor(ACTION_HIGH, dtype=torch.double, device=d), init_cov_diag=1)
 
     total_reward_lst = []
-    for rand_seed in range(10):
+    for rand_seed in range(100):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
 
         # assuming you have a gym-like env
         obs = env.reset()
         cem_ctrl.reset()
-        for i in range(100):
+        for i in range(50):
             s = torch.tensor(obs.reshape(1, -1), dtype=torch.double)
             # sample skill from state dependent prior
             with torch.no_grad():
