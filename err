@@ -1,0 +1,150 @@
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/glfw/__init__.py:834: GLFWError: (65544) b'X11: The DISPLAY environment variable is missing'
+  warnings.warn(message, GLFWError)
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3440: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:262: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:222: RuntimeWarning: invalid value encountered in true_divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean, casting='unsafe',
+/home/motion/ECE598SG-project/venv/lib/python3.8/site-packages/numpy/core/_methods.py:254: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)

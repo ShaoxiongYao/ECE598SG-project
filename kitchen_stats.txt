@@ -1,209 +1,440 @@
 Evaluate kitchen environment:
 evaluate mppi
+Model mode: PlainNet, model type: q_no
 INFO: Making new env: kitchen-mixed-v0
 Reading configurations for Franka
 [40m[37mInitializing Franka sim[0m
 skill prior type: gauss
 number of prior: 1
-episode time: 9.063699007034302
+episode time: 10.58544659614563
 seed 0, total reward: 0.0
-episode time: 8.894694328308105
+episode time: 10.46247935295105
 seed 1, total reward: 0.0
-episode time: 9.464534521102905
+episode time: 10.841084718704224
 seed 2, total reward: 0.0
-episode time: 9.472909450531006
+episode time: 10.046205759048462
 seed 3, total reward: 0.0
-episode time: 9.028425931930542
+episode time: 10.485721111297607
 seed 4, total reward: 0.0
-episode time: 9.49789547920227
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: PlainNet, model type: q_only
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.92189645767212
+seed 0, total reward: 0.0
+episode time: 10.285922765731812
+seed 1, total reward: 1.0
+episode time: 10.717480659484863
+seed 2, total reward: 0.0
+episode time: 10.25788402557373
+seed 3, total reward: 0.0
+episode time: 9.89978814125061
+seed 4, total reward: 0.0
+episode reward, mean: 0.2 std: 0.4000000000000001
+steps for first subtask, mean: 9.0 std: 0.0
+Model mode: PlainNet, model type: q_true
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.437409162521362
+seed 0, total reward: 0.0
+episode time: 10.367353200912476
+seed 1, total reward: 1.0
+episode time: 10.156206369400024
+seed 2, total reward: 0.0
+episode time: 9.592272520065308
+seed 3, total reward: 0.0
+episode time: 9.337692737579346
+seed 4, total reward: 0.0
+episode reward, mean: 0.2 std: 0.4000000000000001
+steps for first subtask, mean: 18.0 std: 0.0
+Model mode: PlainNet, model type: qhat_no
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 9.676113843917847
+seed 0, total reward: 0.0
+episode time: 9.727802276611328
+seed 1, total reward: 0.0
+episode time: 10.103850603103638
+seed 2, total reward: 0.0
+episode time: 10.791653156280518
+seed 3, total reward: 0.0
+episode time: 9.92371392250061
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: PlainNet, model type: qhat_true
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.18446159362793
+seed 0, total reward: 0.0
+episode time: 10.95447301864624
+seed 1, total reward: 0.0
+episode time: 9.732987642288208
+seed 2, total reward: 0.0
+episode time: 9.751611232757568
+seed 3, total reward: 0.0
+episode time: 10.721608638763428
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: LSTM, model type: q_no
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 11.346197843551636
+seed 0, total reward: 0.0
+episode time: 10.593087434768677
+seed 1, total reward: 0.0
+episode time: 11.641687154769897
+seed 2, total reward: 0.0
+episode time: 9.856057405471802
+seed 3, total reward: 0.0
+episode time: 10.957670450210571
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: LSTM, model type: q_only
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 9.824270248413086
+seed 0, total reward: 0.0
+episode time: 9.598236799240112
+seed 1, total reward: 0.0
+episode time: 9.053078413009644
+seed 2, total reward: 1.0
+episode time: 9.27215051651001
+seed 3, total reward: 0.0
+episode time: 9.791621923446655
+seed 4, total reward: 0.0
+episode time: 9.499678134918213
 seed 5, total reward: 0.0
-episode time: 9.402708053588867
+episode time: 9.589148044586182
 seed 6, total reward: 0.0
-episode time: 9.496208429336548
+episode time: 9.563265562057495
 seed 7, total reward: 0.0
-episode time: 8.763840198516846
-seed 8, total reward: 1.0
-episode time: 9.620850563049316
+episode time: 9.683258533477783
+seed 8, total reward: 0.0
+episode time: 9.353012323379517
 seed 9, total reward: 0.0
-episode time: 9.446838855743408
+episode time: 8.706116437911987
 seed 10, total reward: 0.0
-episode time: 9.590199947357178
+episode time: 8.722295761108398
 seed 11, total reward: 0.0
-episode time: 9.68376088142395
+episode time: 8.868917226791382
 seed 12, total reward: 0.0
-episode time: 9.885697603225708
+episode time: 9.608477115631104
 seed 13, total reward: 0.0
-episode time: 9.183770895004272
+episode time: 9.622397422790527
 seed 14, total reward: 0.0
-episode time: 9.89049744606018
+episode time: 9.792173385620117
 seed 15, total reward: 0.0
-episode time: 9.66675329208374
+episode time: 9.424155235290527
 seed 16, total reward: 0.0
-episode time: 8.569802522659302
+episode time: 9.671565294265747
 seed 17, total reward: 0.0
-episode time: 9.386248350143433
+episode time: 9.327066421508789
 seed 18, total reward: 0.0
-episode time: 9.748960256576538
+episode time: 9.343344449996948
 seed 19, total reward: 0.0
-episode time: 9.853800058364868
+episode time: 9.838157892227173
 seed 20, total reward: 0.0
-episode time: 9.684194326400757
+episode time: 9.193048000335693
 seed 21, total reward: 0.0
-episode time: 9.300238370895386
+episode time: 9.269761085510254
 seed 22, total reward: 0.0
-episode time: 9.08139944076538
+episode time: 10.224376678466797
 seed 23, total reward: 0.0
-episode time: 9.892913341522217
+episode time: 9.482331991195679
 seed 24, total reward: 0.0
-episode time: 9.218597412109375
+episode time: 9.142735719680786
 seed 25, total reward: 0.0
-episode time: 9.112526416778564
+episode time: 9.615993976593018
 seed 26, total reward: 0.0
-episode time: 9.120989561080933
+episode time: 9.081708908081055
 seed 27, total reward: 0.0
-episode time: 9.429267883300781
+episode time: 9.175134897232056
 seed 28, total reward: 0.0
-episode time: 9.303617715835571
+episode time: 10.007219791412354
 seed 29, total reward: 0.0
-episode time: 9.451392889022827
+episode time: 9.571115493774414
 seed 30, total reward: 0.0
-episode time: 8.808617115020752
+episode time: 9.058727264404297
 seed 31, total reward: 0.0
-episode time: 9.212608337402344
+episode time: 9.472948789596558
 seed 32, total reward: 0.0
-episode time: 8.732991456985474
+episode time: 9.37046504020691
 seed 33, total reward: 0.0
-episode time: 9.237500667572021
+episode time: 8.577988147735596
 seed 34, total reward: 0.0
-episode time: 9.145437002182007
-seed 35, total reward: 0.0
-episode time: 9.341330528259277
+episode time: 9.596929788589478
+seed 35, total reward: 1.0
+episode time: 10.004722118377686
 seed 36, total reward: 0.0
-episode time: 8.958824634552002
+episode time: 9.151574850082397
 seed 37, total reward: 0.0
-episode time: 9.799194097518921
+episode time: 9.154391765594482
 seed 38, total reward: 0.0
-episode time: 9.333446502685547
+episode time: 8.963053941726685
 seed 39, total reward: 0.0
-episode time: 9.27861762046814
+episode time: 9.58484697341919
 seed 40, total reward: 0.0
-episode time: 8.78006887435913
+episode time: 9.65725064277649
 seed 41, total reward: 0.0
-episode time: 9.666067361831665
+episode time: 8.938317060470581
 seed 42, total reward: 0.0
-episode time: 9.223119258880615
-seed 43, total reward: 1.0
-episode time: 9.184740781784058
+episode time: 9.436932563781738
+seed 43, total reward: 0.0
+episode time: 10.077740907669067
 seed 44, total reward: 0.0
-episode time: 9.425206899642944
+episode time: 9.505016565322876
 seed 45, total reward: 0.0
-episode time: 9.536494970321655
+episode time: 9.000840902328491
 seed 46, total reward: 0.0
-episode time: 8.351808547973633
+episode time: 9.045583724975586
 seed 47, total reward: 0.0
-episode time: 8.963151454925537
+episode time: 9.296055555343628
 seed 48, total reward: 0.0
-episode time: 8.936773300170898
+episode time: 9.641179323196411
 seed 49, total reward: 0.0
-episode time: 9.395994186401367
+episode time: 9.26693844795227
 seed 50, total reward: 0.0
-episode time: 9.889999389648438
+episode time: 9.665381908416748
 seed 51, total reward: 0.0
-episode time: 9.585333347320557
+episode time: 10.355680465698242
 seed 52, total reward: 0.0
-episode time: 9.727250337600708
+episode time: 9.13642168045044
 seed 53, total reward: 0.0
-episode time: 9.447256565093994
+episode time: 8.863201379776001
 seed 54, total reward: 0.0
-episode time: 9.203160047531128
+episode time: 9.874819040298462
 seed 55, total reward: 0.0
-episode time: 9.325275659561157
+episode time: 9.720950603485107
 seed 56, total reward: 0.0
-episode time: 9.324187278747559
+episode time: 10.20414924621582
 seed 57, total reward: 0.0
-episode time: 9.703914403915405
+episode time: 9.26201605796814
 seed 58, total reward: 0.0
-episode time: 9.77958345413208
+episode time: 9.754624128341675
 seed 59, total reward: 0.0
-episode time: 8.549002170562744
+episode time: 9.218572854995728
 seed 60, total reward: 0.0
-episode time: 9.18520975112915
+episode time: 9.002482891082764
 seed 61, total reward: 0.0
-episode time: 9.428560733795166
+episode time: 10.099318027496338
 seed 62, total reward: 0.0
-episode time: 9.260728120803833
+episode time: 9.75291109085083
 seed 63, total reward: 0.0
-episode time: 9.09122633934021
+episode time: 10.220853328704834
 seed 64, total reward: 0.0
-episode time: 9.374863386154175
+episode time: 10.905508518218994
 seed 65, total reward: 0.0
-episode time: 9.107136726379395
+episode time: 11.194681406021118
 seed 66, total reward: 0.0
-episode time: 8.739812135696411
-seed 67, total reward: 1.0
-episode time: 9.145031213760376
+episode time: 10.912334680557251
+seed 67, total reward: 0.0
+episode time: 10.946760177612305
 seed 68, total reward: 0.0
-episode time: 9.021918773651123
-seed 69, total reward: 1.0
-episode time: 8.918534278869629
+episode time: 10.61488938331604
+seed 69, total reward: 0.0
+episode time: 11.08920931816101
 seed 70, total reward: 0.0
-episode time: 8.406778335571289
+episode time: 10.599016666412354
 seed 71, total reward: 0.0
-episode time: 9.410032510757446
+episode time: 11.771414756774902
 seed 72, total reward: 0.0
-episode time: 8.906404733657837
+episode time: 10.48454999923706
 seed 73, total reward: 0.0
-episode time: 9.384881973266602
+episode time: 10.632688283920288
 seed 74, total reward: 0.0
-episode time: 9.805752515792847
+episode time: 11.183283805847168
 seed 75, total reward: 0.0
-episode time: 9.395443677902222
+episode time: 11.134498834609985
 seed 76, total reward: 0.0
-episode time: 9.298093557357788
+episode time: 12.034628629684448
 seed 77, total reward: 0.0
-episode time: 8.991487503051758
+episode time: 11.420642614364624
 seed 78, total reward: 0.0
-episode time: 9.353734493255615
+episode time: 11.08253526687622
 seed 79, total reward: 0.0
-episode time: 8.88569951057434
-seed 80, total reward: 1.0
-episode time: 8.71536111831665
+episode time: 10.65073561668396
+seed 80, total reward: 0.0
+episode time: 11.127808094024658
 seed 81, total reward: 0.0
-episode time: 8.8675537109375
+episode time: 12.052664518356323
 seed 82, total reward: 0.0
-episode time: 9.472417116165161
+episode time: 10.543600797653198
 seed 83, total reward: 0.0
-episode time: 9.065461158752441
+episode time: 10.840136289596558
 seed 84, total reward: 0.0
-episode time: 9.392834424972534
+episode time: 10.734469175338745
 seed 85, total reward: 0.0
-episode time: 8.620255947113037
+episode time: 10.990978479385376
 seed 86, total reward: 0.0
-episode time: 8.826666116714478
+episode time: 10.546252012252808
 seed 87, total reward: 0.0
-episode time: 9.476325511932373
+episode time: 11.015814065933228
 seed 88, total reward: 0.0
-episode time: 9.604464292526245
+episode time: 10.74627685546875
 seed 89, total reward: 0.0
-episode time: 8.945172786712646
-seed 90, total reward: 1.0
-episode time: 9.337568521499634
+episode time: 11.367490768432617
+seed 90, total reward: 0.0
+episode time: 10.629308938980103
 seed 91, total reward: 0.0
-episode time: 9.379925966262817
+episode time: 10.57607364654541
 seed 92, total reward: 0.0
-episode time: 9.907855987548828
+episode time: 10.00855016708374
 seed 93, total reward: 0.0
-episode time: 9.341782569885254
+episode time: 11.056617259979248
 seed 94, total reward: 0.0
-episode time: 9.304328680038452
+episode time: 10.099217414855957
 seed 95, total reward: 0.0
-episode time: 8.91031289100647
+episode time: 11.036816835403442
 seed 96, total reward: 0.0
-episode time: 9.114253759384155
+episode time: 11.39261794090271
 seed 97, total reward: 0.0
-episode time: 9.839277982711792
+episode time: 11.40111494064331
 seed 98, total reward: 0.0
-episode time: 8.705209016799927
+episode time: 11.64932632446289
 seed 99, total reward: 0.0
-episode reward, mean: 0.06 std: 0.23748684174075832
-steps for first subtask, mean: 8.333333333333334 std: 3.636237371545238
+episode reward, mean: 0.02 std: 0.13999999999999999
+steps for first subtask, mean: 10.0 std: 2.0
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.553309440612793
+seed 0, total reward: 0.0
+episode time: 10.89215612411499
+seed 1, total reward: 0.0
+episode time: 10.627830028533936
+seed 2, total reward: 0.0
+episode time: 10.972990036010742
+seed 3, total reward: 0.0
+episode time: 10.566718101501465
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: LSTM, model type: q_true
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.977806091308594
+seed 0, total reward: 0.0
+episode time: 10.752936124801636
+seed 1, total reward: 0.0
+episode time: 12.511711359024048
+seed 2, total reward: 0.0
+episode time: 11.332866668701172
+seed 3, total reward: 0.0
+episode time: 11.293418884277344
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.932430982589722
+seed 0, total reward: 0.0
+episode time: 11.246736288070679
+seed 1, total reward: 0.0
+episode time: 10.575952291488647
+seed 2, total reward: 1.0
+episode time: 11.083256959915161
+seed 3, total reward: 0.0
+episode time: 11.757425785064697
+seed 4, total reward: 0.0
+episode reward, mean: 0.2 std: 0.4000000000000001
+steps for first subtask, mean: 21.0 std: 0.0
+Model mode: LSTM, model type: qhat_no
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.427279949188232
+seed 0, total reward: 0.0
+episode time: 11.948906660079956
+seed 1, total reward: 0.0
+episode time: 10.714767456054688
+seed 2, total reward: 0.0
+episode time: 11.33349871635437
+seed 3, total reward: 0.0
+episode time: 10.962005138397217
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.473630666732788
+seed 0, total reward: 0.0
+episode time: 10.474100112915039
+seed 1, total reward: 0.0
+episode time: 11.024535894393921
+seed 2, total reward: 0.0
+episode time: 11.530192613601685
+seed 3, total reward: 0.0
+episode time: 10.684006214141846
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+Model mode: LSTM, model type: qhat_true
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 10.935829639434814
+seed 0, total reward: 0.0
+episode time: 10.098938465118408
+seed 1, total reward: 1.0
+episode time: 10.581751108169556
+seed 2, total reward: 0.0
+episode time: 11.177065372467041
+seed 3, total reward: 0.0
+episode time: 11.533121824264526
+seed 4, total reward: 0.0
+episode reward, mean: 0.2 std: 0.4000000000000001
+steps for first subtask, mean: 6.0 std: 0.0
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
+episode time: 11.693938255310059
+seed 0, total reward: 0.0
+episode time: 11.280030012130737
+seed 1, total reward: 0.0
+episode time: 12.012327909469604
+seed 2, total reward: 0.0
+episode time: 11.04198431968689
+seed 3, total reward: 0.0
+episode time: 11.073269128799438
+seed 4, total reward: 0.0
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
