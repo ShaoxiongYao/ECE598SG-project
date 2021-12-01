@@ -1,0 +1,6 @@
+Evaluate kitchen environment:
+INFO: Making new env: kitchen-mixed-v0
+Reading configurations for Franka
+[40m[37mInitializing Franka sim[0m
+skill prior type: gauss
+number of prior: 1
