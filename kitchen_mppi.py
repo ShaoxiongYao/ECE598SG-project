@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
     total_reward_lst = []
     first_subtask_steps_lst = []
-    for rand_seed in range(10):
+    for rand_seed in range(100):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
 
