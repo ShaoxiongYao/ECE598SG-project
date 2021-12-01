@@ -127,7 +127,7 @@ if __name__ == '__main__':
         total_reward_lst.append(total_reward)
         if first_subtask_steps is not None:
             first_subtask_steps_lst.append(first_subtask_steps)
-        # print(f"seed {rand_seed}, total reward:", total_reward)        
+        print(f"seed {rand_seed}, total reward:", total_reward)        
     
     print("episode reward, mean:", np.mean(total_reward_lst), 
           "std:", np.std(total_reward_lst) )
