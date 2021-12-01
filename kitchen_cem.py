@@ -1,16 +1,18 @@
+import logging
+import sys
+import time
+
 import numpy as np
 import torch
-import logging
-import time
-from pytorch_cem import cem
 from gym import logger as gym_log
-from data.example_dynamics_data.reader import PlainNet, LSTM
-from spirl.rl.envs.kitchen import KitchenEnv
-from kitchen_utils import OBS_ELEMENT_GOALS, model_config, OBS_ELEMENT_INDICES
-from spirl.models.skill_prior_mdl import SkillPriorMdl
 
-from kitchen_utils import kitchen_dims
-from kitchen_utils import create_dynamics_model, create_skill_step, create_running_cost
+from data.example_dynamics_data.reader import LSTM, PlainNet
+from kitchen_utils import (OBS_ELEMENT_GOALS, OBS_ELEMENT_INDICES,
+                           create_dynamics_model, create_running_cost,
+                           create_skill_step, kitchen_dims, model_config)
+from pytorch_cem import cem
+from spirl.models.skill_prior_mdl import SkillPriorMdl
+from spirl.rl.envs.kitchen import KitchenEnv
 
 # MPPI logger
 gym_log.set_level(gym_log.INFO)
@@ -120,8 +122,8 @@ if __name__ == '__main__':
 
         if first_subtask_steps is not None:
             first_subtask_steps_lst.append(first_subtask_steps)
-        print(f"seed {rand_seed}, total reward:", total_reward) 
-        print("episode time:", time.time() - start_time)
+        print(f"seed {rand_seed}, total reward:", total_reward, file=sys.stderr) 
+        print("episode time:", time.time() - start_time, file=sys.stderr)
         total_reward_lst.append(total_reward)
     
     print("episode reward, mean:", np.mean(total_reward_lst), 
