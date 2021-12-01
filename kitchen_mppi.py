@@ -120,7 +120,7 @@ if __name__ == '__main__':
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])
 
         total_reward_lst.append(total_reward)
-        print(f"seed {rand_seed}, total reward:", total_reward)        
+        # print(f"seed {rand_seed}, total reward:", total_reward)        
     
     print("average total reward:", np.mean(total_reward_lst))
 
