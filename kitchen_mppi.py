@@ -49,6 +49,15 @@ if __name__ == '__main__':
 
     env = KitchenEnv({})
 
+    # Possible options
+    #   MLP q_no 
+    #   MLP q_true
+    #   MLP q_only
+    #   MLP qhat_no 
+    #   MLP qhat_true
+    #   MLP qhat_only
+    #   LSTM q_no
+    #   LSTM qhat_no
     skill_dynamics = create_dynamics_model(model_mode=args.model_mode, 
                                            model_type=args.model_type, 
                                            env_name='kitchen')
