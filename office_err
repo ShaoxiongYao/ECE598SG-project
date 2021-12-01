@@ -1,0 +1,72 @@
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+Traceback (most recent call last):
+  File "office_mppi.py", line 135, in <module>
+    obs, reward, done, info = env.step(a[0])
+  File "/home/motion/ECE598SG-project/spirl/rl/envs/office.py", line 18, in step
+    obs, rew, done, info = super().step(action)
+  File "/home/motion/ECE598SG-project/spirl/rl/components/environment.py", line 77, in step
+    obs, reward, done, info = self._env.step(action)
+  File "/home/motion/roboverse/roboverse/envs/widow250_office.py", line 349, in step
+    obs, reward, _, info = super().step(action)
+  File "/home/motion/roboverse/roboverse/envs/widow250.py", line 213, in step
+    raise RuntimeError('Action has NaN entries')
+RuntimeError: Action has NaN entries
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
+/home/motion/ECE598SG-project/spirl/modules/layers.py:12: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
+  nn.init.xavier_normal(m.weight.data)
+/home/motion/ECE598SG-project/pytorch_cem/cem.py:174: UserWarning: torch.matrix_rank is deprecated in favor of torch.linalg.matrix_rankand will be removed in a future PyTorch release. The parameter 'symmetric' was renamed in torch.linalg.matrix_rank to 'hermitian'. (Triggered internally at  ../aten/src/ATen/native/LinearAlgebra.cpp:473.)
+  if torch.matrix_rank(self.cov) < self.cov.shape[0]:
