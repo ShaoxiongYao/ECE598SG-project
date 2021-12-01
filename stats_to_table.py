@@ -1,6 +1,6 @@
 import numpy as np
 
-from stats_str import kitchen_mppi_stats, office_cem_stats, office_mppi_stats
+from stats_str import kitchen_cem_stats, kitchen_mppi_stats, office_cem_stats, office_mppi_stats
 
 model_type_to_str = {
     'q_no': r'$q$,demo', 
@@ -56,9 +56,11 @@ def process_office_stats(office_stats, mpc_name):
         print(exp_head + " & " + reward_stats + " & " + steps_stats + r" \\")
 
 if __name__ == "__main__":
-    print("kitchen MPPI table:")
-    process_kitchen_state(kitchen_mppi_stats, 'MPPI')
-    print("office CEM table:")
-    process_office_stats(office_cem_stats, 'CEM')
-    print("office MPPI table:")
-    process_office_stats(office_mppi_stats, 'MPPI')
+    print("kitchen CEM table:")
+    process_kitchen_state(kitchen_cem_stats, 'CEM')
+    # print("kitchen MPPI table:")
+    # process_kitchen_state(kitchen_mppi_stats, 'MPPI')
+    # print("office CEM table:")
+    # process_office_stats(office_cem_stats, 'CEM')
+    # print("office MPPI table:")
+    # process_office_stats(office_mppi_stats, 'MPPI')

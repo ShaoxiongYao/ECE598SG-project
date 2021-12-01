@@ -1,3 +1,42 @@
+kitchen_cem_stats = """Model mode: PlainNet, model type: q_no
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+
+Model mode: PlainNet, model type: q_only
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 14.0 std: 0.0
+
+Model mode: PlainNet, model type: q_true
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+
+Model mode: PlainNet, model type: qhat_no
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 25.0 std: 0.0
+
+Model mode: PlainNet, model type: qhat_true
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 43.0 std: 0.0
+
+Model mode: LSTM, model type: q_no
+episode reward, mean: 0.02 std: 0.13999999999999999
+steps for first subtask, mean: 17.0 std: 1.0
+
+Model mode: LSTM, model type: q_only
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+
+Model mode: LSTM, model type: q_true
+episode reward, mean: 0.01 std: 0.09949874371066199
+steps for first subtask, mean: 48.0 std: 0.0
+
+Model mode: LSTM, model type: qhat_no
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan
+
+Model mode: LSTM, model type: qhat_true
+episode reward, mean: 0.0 std: 0.0
+steps for first subtask, mean: nan std: nan"""
 
 kitchen_mppi_stats = """Model mode: PlainNet, model type: q_no
 episode reward, mean: 0.07 std: 0.25514701644346144
