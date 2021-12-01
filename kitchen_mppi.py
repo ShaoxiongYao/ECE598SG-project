@@ -87,6 +87,8 @@ if __name__ == '__main__':
         # assuming you have a gym-like env
         obs = env.reset()
         mppi_ctrl.reset()
+        
+        start_time = time.time()
 
         first_subtask_steps = None
         for i in range(100):
@@ -127,6 +129,7 @@ if __name__ == '__main__':
         total_reward_lst.append(total_reward)
         if first_subtask_steps is not None:
             first_subtask_steps_lst.append(first_subtask_steps)
+        print("episode time:", time.time() - start_time)
         print(f"seed {rand_seed}, total reward:", total_reward)        
     
     print("episode reward, mean:", np.mean(total_reward_lst), 
