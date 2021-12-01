@@ -70,7 +70,7 @@ if __name__ == '__main__':
                        horizon=TIMESTEPS, device=d, num_elite=N_ELITES,
                        u_max=torch.tensor(ACTION_HIGH, dtype=torch.double, device=d), init_cov_diag=1)
 
-
+    total_reward_lst = []
     for rand_seed in range(10):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
@@ -112,4 +112,7 @@ if __name__ == '__main__':
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])
 
         print(f"seed {rand_seed}, total reward:", total_reward)        
+        total_reward_lst.append(total_reward)
+    
+    print("average total reward:", np.mean(total_reward_lst))
 
