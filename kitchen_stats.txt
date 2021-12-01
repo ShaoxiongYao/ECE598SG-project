@@ -4,16 +4,139 @@ Reading configurations for Franka
 [40m[37mInitializing Franka sim[0m
 skill prior type: gauss
 number of prior: 1
+episode time: 14.739100217819214
 seed 0, total reward: 0.0
+episode time: 16.10954713821411
 seed 1, total reward: 0.0
+episode time: 17.209286212921143
 seed 2, total reward: 0.0
+episode time: 14.51051378250122
 seed 3, total reward: 0.0
+episode time: 17.440527200698853
 seed 4, total reward: 0.0
+episode time: 16.602065086364746
 seed 5, total reward: 0.0
+episode time: 17.058770895004272
 seed 6, total reward: 0.0
+episode time: 16.72927498817444
 seed 7, total reward: 0.0
+episode time: 17.2362380027771
 seed 8, total reward: 0.0
+episode time: 16.221994638442993
 seed 9, total reward: 0.0
+episode time: 16.313956022262573
 seed 10, total reward: 0.0
+episode time: 18.49206781387329
 seed 11, total reward: 0.0
+episode time: 15.890619039535522
 seed 12, total reward: 0.0
+episode time: 15.601563215255737
+seed 13, total reward: 0.0
+episode time: 16.285691261291504
+seed 14, total reward: 0.0
+episode time: 15.78101634979248
+seed 15, total reward: 0.0
+episode time: 16.261695861816406
+seed 16, total reward: 0.0
+episode time: 14.777061939239502
+seed 17, total reward: 0.0
+episode time: 15.465534925460815
+seed 18, total reward: 0.0
+episode time: 15.591169357299805
+seed 19, total reward: 0.0
+episode time: 14.540988683700562
+seed 20, total reward: 0.0
+episode time: 15.796268701553345
+seed 21, total reward: 0.0
+episode time: 17.299315214157104
+seed 22, total reward: 0.0
+episode time: 17.647433042526245
+seed 23, total reward: 0.0
+episode time: 16.044402837753296
+seed 24, total reward: 0.0
+episode time: 16.927884578704834
+seed 25, total reward: 0.0
+episode time: 17.305521965026855
+seed 26, total reward: 0.0
+episode time: 14.987311363220215
+seed 27, total reward: 0.0
+episode time: 15.61534333229065
+seed 28, total reward: 0.0
+episode time: 16.506693363189697
+seed 29, total reward: 0.0
+episode time: 14.45136547088623
+seed 30, total reward: 0.0
+episode time: 15.084053754806519
+seed 31, total reward: 0.0
+episode time: 15.472531080245972
+seed 32, total reward: 0.0
+episode time: 15.048319816589355
+seed 33, total reward: 0.0
+episode time: 16.436428785324097
+seed 34, total reward: 0.0
+episode time: 16.57830286026001
+seed 35, total reward: 0.0
+episode time: 16.0162992477417
+seed 36, total reward: 0.0
+episode time: 14.130845069885254
+seed 37, total reward: 0.0
+episode time: 15.262196063995361
+seed 38, total reward: 0.0
+episode time: 16.208481073379517
+seed 39, total reward: 0.0
+episode time: 16.679563760757446
+seed 40, total reward: 0.0
+episode time: 16.09048342704773
+seed 41, total reward: 0.0
+episode time: 16.351438283920288
+seed 42, total reward: 0.0
+episode time: 16.435223817825317
+seed 43, total reward: 0.0
+episode time: 14.444698333740234
+seed 44, total reward: 0.0
+episode time: 14.849545001983643
+seed 45, total reward: 0.0
+episode time: 17.139533042907715
+seed 46, total reward: 0.0
+episode time: 16.6881422996521
+seed 47, total reward: 0.0
+episode time: 16.606440782546997
+seed 48, total reward: 0.0
+episode time: 16.719319581985474
+seed 49, total reward: 0.0
+episode time: 17.800076961517334
+seed 50, total reward: 0.0
+episode time: 14.552438497543335
+seed 51, total reward: 0.0
+episode time: 15.650242567062378
+seed 52, total reward: 0.0
+episode time: 17.0432550907135
+seed 53, total reward: 0.0
+episode time: 14.972739219665527
+seed 54, total reward: 0.0
+episode time: 14.935042381286621
+seed 55, total reward: 0.0
+episode time: 14.823535919189453
+seed 56, total reward: 0.0
+episode time: 16.282444953918457
+seed 57, total reward: 0.0
+episode time: 16.03112530708313
+seed 58, total reward: 0.0
+episode time: 15.833520412445068
+seed 59, total reward: 0.0
+episode time: 16.058431148529053
+seed 60, total reward: 0.0
+episode time: 15.743335962295532
+seed 61, total reward: 0.0
+episode time: 16.392868280410767
+seed 62, total reward: 0.0
+episode time: 15.313409328460693
+seed 63, total reward: 0.0
+episode time: 16.02736783027649
+seed 64, total reward: 0.0
+episode time: 17.011927843093872
+seed 65, total reward: 1.0
+episode time: 16.32854723930359
+seed 66, total reward: 0.0
+episode time: 15.984519243240356
+seed 67, total reward: 0.0

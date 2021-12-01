@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import time
 import logging
 from pytorch_mppi import mppi
 from gym import logger as gym_log
