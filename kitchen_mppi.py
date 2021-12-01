@@ -92,7 +92,7 @@ if __name__ == '__main__':
         start_time = time.time()
 
         first_subtask_steps = None
-        for i in range(100):
+        for i in range(50):
             s = torch.tensor(obs.reshape(1, -1))
             # sample skill from state dependent prior
             with torch.no_grad():
