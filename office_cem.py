@@ -103,6 +103,7 @@ if __name__ == '__main__':
 
     tot_reward = 0
     success_episodes = 0
+    skill_length_lst = []    
 
     for episode_idx in range(100):
         print("episode index:", episode_idx)
@@ -137,6 +138,7 @@ if __name__ == '__main__':
 
                     open_drawer_reward = np.abs(obs[70]-0.3)
                     if open_drawer_reward < 0.02:
+                        skill_length_lst.append(step_idx)
                         task_done = True
                     
                     # img = env._render_raw(mode='rgb_array')
@@ -159,4 +161,5 @@ if __name__ == '__main__':
         print("success rate:", success_episodes/float(episode_idx+1))
         
     
-    print("reward:", tot_reward)
+    print("Final success rate:", success_episodes/float(episode_idx+1))
+    print("skill steps:", skill_length_lst)
