@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import torch
 from torch.nn import MSELoss
@@ -48,14 +49,15 @@ kitchen_dims = {
 
 model_type = "prior_endless"
 
-def create_dynamics_model(model_mode, model_type): # or 'q'
-    
+def create_dynamics_model(model_mode, model_type, env_name='kitchen'): # or 'q'
+
+    model_dir = 'data/example_dynamics_data/models/'+env_name
     if model_mode == 'PlainNet':
         dynamics_model = PlainNet(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
-        dynamics_model = torch.load('data/example_dynamics_data/kitchen_MLP_'+model_type+'.pth')
+        dynamics_model = torch.load(os.path.join(model_dir, 'MLP_'+model_type+'.pth'))
     elif model_mode == "LSTM":
         dynamics_model = LSTM(kitchen_dims['s'] + kitchen_dims['z'], kitchen_dims['s'])
-        dynamics_model = torch.load('data/example_dynamics_data/kitchen_LSTM_'+model_type+'.pth')
+        dynamics_model = torch.load(os.path.join(model_dir, 'LSTM_'+model_type+'.pth'))
         
     def skill_dynamics(state, skill):
         state = state.to(skill.device)

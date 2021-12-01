@@ -3,7 +3,7 @@ import torch
 import logging
 from pytorch_mppi import mppi
 from gym import logger as gym_log
-from data.example_dynamics_data.reader import PlainNet, LSTM, ResMLP
+from data.example_dynamics_data.reader import PlainNet, LSTM
 from spirl.rl.envs.kitchen import KitchenEnv
 from kitchen_utils import OBS_ELEMENT_GOALS, model_config, OBS_ELEMENT_INDICES
 from spirl.models.skill_prior_mdl import SkillPriorMdl
@@ -21,6 +21,13 @@ logging.basicConfig(level=logging.DEBUG,
 
 if __name__ == '__main__':
     np.set_printoptions(precision=2, suppress=True)
+
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_mode', type=str)
+    parser.add_argument('--model_type', type=str)
+    args = parser.parse_args()
 
     # state dimenison
     nx = kitchen_dims['s']
@@ -42,7 +49,9 @@ if __name__ == '__main__':
 
     env = KitchenEnv({})
 
-    skill_dynamics = create_dynamics_model(model_mode='ResMLP', model_type="qhat")
+    skill_dynamics = create_dynamics_model(model_mode=args.model_mode, 
+                                           model_type=args.model_type, 
+                                           env_name='kitchen')
     running_cost   = create_running_cost()
     
     # HACK: directly load model
@@ -96,7 +105,7 @@ if __name__ == '__main__':
                 obs, reward, done, info = env.step(a_np)
                 total_reward += reward
 
-                # env._render_raw(mode=render_mode)
+                env._render_raw(mode=render_mode)
 
             # print("light switch state:", obs[OBS_ELEMENT_INDICES['light switch']])
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])

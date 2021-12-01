@@ -22,6 +22,13 @@ logging.basicConfig(level=logging.DEBUG,
 if __name__ == '__main__':
     np.set_printoptions(precision=2, suppress=True)
 
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_mode', type=str)
+    parser.add_argument('--model_type', type=str)
+    args = parser.parse_args()
+
     # state dimenison
     nx = kitchen_dims['s']
     nu = kitchen_dims['z']
@@ -45,7 +52,8 @@ if __name__ == '__main__':
 
     env = KitchenEnv({})
 
-    skill_dynamics = create_dynamics_model(model_mode='LSTM', model_type="qhat")
+    skill_dynamics = create_dynamics_model(model_mode=args.model_mode, 
+                                           model_type=args.model_type)
     running_cost   = create_running_cost()
     
     # HACK: directly load model
