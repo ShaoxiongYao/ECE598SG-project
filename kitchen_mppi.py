@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+import cv2
 import time
 import logging
 from pytorch_mppi import mppi
@@ -81,7 +82,7 @@ if __name__ == '__main__':
 
     total_reward_lst = []
     first_subtask_steps_lst = []
-    for rand_seed in range(100):
+    for rand_seed in range(11, 100):
         torch.manual_seed(rand_seed)
         total_reward = 0.0
 
@@ -122,7 +123,7 @@ if __name__ == '__main__':
                     first_subtask_steps = i
                 total_reward += reward
 
-                # env._render_raw(mode=render_mode)
+                env._render_raw(mode=render_mode)
 
             # print("light switch state:", obs[OBS_ELEMENT_INDICES['light switch']])
             # print("light switch goal:", OBS_ELEMENT_GOALS['light switch'])

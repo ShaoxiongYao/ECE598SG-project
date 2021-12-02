@@ -2,6 +2,7 @@
 __pycache__
 *.egg-info
 
+videos/*
 experiments/*
 
 data/example_dynamics_data

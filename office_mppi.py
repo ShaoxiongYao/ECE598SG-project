@@ -103,8 +103,14 @@ if __name__ == '__main__':
     success_episodes = 0
     skill_length_lst = []    
 
-    for episode_idx in range(100):
+    for episode_idx in [6]:
         print("episode index:", episode_idx)
+
+        video_fn  = 'videos/office_mppi'+str(episode_idx)+'.avi' 
+        v_writter = cv2.VideoWriter(video_fn, 
+                                    cv2.VideoWriter_fourcc('M','J','P','G'), 
+                                    10, (400, 400))
+
         obs = env.reset()
         s_ts, s_tplusNs, zs = [], [], []
 
@@ -139,7 +145,8 @@ if __name__ == '__main__':
                         skill_length_lst.append(step_idx)
                         task_done = True
                     
-                    # img = env._render_raw(mode='rgb_array')
+                    img = env._render_raw(mode='rgb_array')
+                    v_writter.write(img)
                     # cv2.imshow("Office", img)
                     # cv2.waitKey(1)  
 
@@ -155,6 +162,7 @@ if __name__ == '__main__':
                 success_episodes += 1
                 break  
         
+        v_writter.release()
         print("episode time:", time.time()-start_time)
         print("success rate:", success_episodes/float(episode_idx+1))
         
